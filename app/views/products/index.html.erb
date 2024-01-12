@@ -30,17 +30,19 @@
 
 <p style="color: green"><%= notice %></p>
 
-<h1>Products</h1>
 
-<div id="clients">
-  <table class="table">
+
+<div class="container mb-4" id="clients">
+  <h1 class="text-center">PRODUTOS</h1>
+  <table class="table table-hover">
     <thead>
       <tr>
-        <th scope="col">Código</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Preço</th>
-        <th scope="col">Quantidade</th>
-        <th scope="col">Categoria</th>
+        <th class="table-primary" scope="col">Código</th>
+        <th class="table-primary" scope="col">Nome</th>
+        <th class="table-primary" scope="col">Preço</th>
+        <th class="table-primary" scope="col">Quantidade</th>
+        <th class="table-primary" scope="col">Categoria</th>
+        <th class="table-primary" scope="col">Botoes</th>
       </tr>
     </thead>
     <tbody>
@@ -51,9 +53,15 @@
         <td> <%=product.price%> </td>
         <td> <%=product.quantity%> </td>
         <td> <%=product.category%> </td>
+        <td>
+          <%= button_to "Editar", edit_product_path(product), method: :get, class: "btn btn-primary" %>
+          <%= button_to "Deletar", product_path(product.id), method: :delete, class: "btn btn-danger" %>
+        </td>
       </tr>
       <% end %>
     </tbody>
   </table>
+  <%= button_to "Novo produto", new_product_path, method: :get, class: "btn btn-primary"%>
 </div>
-<%= link_to "New product", new_product_path %>
+
+

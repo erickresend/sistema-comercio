@@ -3883,3 +3883,2032 @@ Processing by ClientsController#index as HTML
 Completed 200 OK in 70ms (Views: 42.2ms | ActiveRecord: 4.7ms | Allocations: 32092)
 
 
+Started GET "/" for 127.0.0.1 at 2024-01-12 11:17:40 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 11.2ms | Allocations: 1045)
+  Rendered layout layouts/application.html.erb (Duration: 101.3ms | Allocations: 40048)
+Completed 200 OK in 4208ms (Views: 112.6ms | ActiveRecord: 0.0ms | Allocations: 1079751)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 11:17:47 -0300
+Processing by ProductsController#index as HTML
+Completed 401 Unauthorized in 32ms (ActiveRecord: 0.0ms | Allocations: 3800)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-12 11:17:47 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.1ms | Allocations: 703)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 19.7ms | Allocations: 3870)
+  Rendered layout layouts/application.html.erb (Duration: 25.0ms | Allocations: 5885)
+Completed 200 OK in 79ms (Views: 28.0ms | ActiveRecord: 4.0ms | Allocations: 21190)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-12 11:19:17 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 3.6ms | Allocations: 215)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 13.2ms | Allocations: 982)
+  Rendered layout layouts/application.html.erb (Duration: 23.6ms | Allocations: 2816)
+Completed 200 OK in 30ms (Views: 25.3ms | ActiveRecord: 0.0ms | Allocations: 3594)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-12 11:20:09 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.6ms | Allocations: 636)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 5.3ms | Allocations: 2017)
+  Rendered layout layouts/application.html.erb (Duration: 31.2ms | Allocations: 19949)
+Completed 200 OK in 47ms (Views: 34.4ms | ActiveRecord: 2.5ms | Allocations: 26075)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-12 11:20:14 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "erick.resend@gmail.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/products
+Completed 303 See Other in 357ms (ActiveRecord: 1.2ms | Allocations: 9800)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 11:20:14 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:47
+  Rendered products/index.html.erb within layouts/application (Duration: 21.1ms | Allocations: 9719)
+  Rendered layout layouts/application.html.erb (Duration: 24.9ms | Allocations: 11774)
+Completed 200 OK in 33ms (Views: 26.5ms | ActiveRecord: 0.7ms | Allocations: 14798)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-12 11:21:15 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 12ms (ActiveRecord: 2.1ms | Allocations: 6384)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-12 11:21:16 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/welcome/index.html.erb:17
+  Rendered welcome/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1734)
+  Rendered layout layouts/application.html.erb (Duration: 24.6ms | Allocations: 19878)
+Completed 200 OK in 28ms (Views: 26.4ms | ActiveRecord: 0.1ms | Allocations: 21270)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-12 11:21:17 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:46
+  Rendered clients/index.html.erb within layouts/application (Duration: 22.1ms | Allocations: 7100)
+  Rendered layout layouts/application.html.erb (Duration: 27.3ms | Allocations: 9080)
+Completed 200 OK in 38ms (Views: 28.7ms | ActiveRecord: 0.9ms | Allocations: 11842)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 11:21:24 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:47
+  Rendered products/index.html.erb within layouts/application (Duration: 10.0ms | Allocations: 5043)
+  Rendered layout layouts/application.html.erb (Duration: 13.0ms | Allocations: 7023)
+Completed 200 OK in 27ms (Views: 13.4ms | ActiveRecord: 0.9ms | Allocations: 9759)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 11:21:49 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 15.3ms | Allocations: 5076)
+  Rendered layout layouts/application.html.erb (Duration: 45.9ms | Allocations: 23045)
+Completed 200 OK in 76ms (Views: 51.0ms | ActiveRecord: 3.2ms | Allocations: 31640)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 11:22:28 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 17.3ms | Allocations: 5075)
+  Rendered layout layouts/application.html.erb (Duration: 45.1ms | Allocations: 23217)
+Completed 200 OK in 77ms (Views: 47.3ms | ActiveRecord: 6.4ms | Allocations: 31801)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-12 11:22:29 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:45
+  Rendered clients/index.html.erb within layouts/application (Duration: 19.2ms | Allocations: 5194)
+  Rendered layout layouts/application.html.erb (Duration: 25.4ms | Allocations: 7174)
+Completed 200 OK in 32ms (Views: 26.3ms | ActiveRecord: 0.8ms | Allocations: 9884)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-12 11:26:59 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.7ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:45
+  Rendered clients/index.html.erb within layouts/application (Duration: 6.6ms | Allocations: 1417)
+  Rendered layout layouts/application.html.erb (Duration: 16.0ms | Allocations: 3255)
+Completed 200 OK in 27ms (Views: 18.1ms | ActiveRecord: 0.8ms | Allocations: 5006)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-12 11:29:23 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:45
+  Rendered clients/index.html.erb within layouts/application (Duration: 11.2ms | Allocations: 5226)
+  Rendered layout layouts/application.html.erb (Duration: 48.8ms | Allocations: 23195)
+Completed 200 OK in 71ms (Views: 49.9ms | ActiveRecord: 3.3ms | Allocations: 31775)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-12 11:29:25 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:45
+  Rendered clients/index.html.erb within layouts/application (Duration: 10.8ms | Allocations: 1417)
+  Rendered layout layouts/application.html.erb (Duration: 26.7ms | Allocations: 3255)
+Completed 200 OK in 45ms (Views: 27.5ms | ActiveRecord: 0.4ms | Allocations: 5025)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-12 11:29:33 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:45
+  Rendered clients/index.html.erb within layouts/application (Duration: 12.5ms | Allocations: 5228)
+  Rendered layout layouts/application.html.erb (Duration: 32.2ms | Allocations: 23307)
+Completed 200 OK in 56ms (Views: 33.4ms | ActiveRecord: 4.6ms | Allocations: 31897)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-12 11:29:38 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:45
+  Rendered clients/index.html.erb within layouts/application (Duration: 9.0ms | Allocations: 5226)
+  Rendered layout layouts/application.html.erb (Duration: 28.3ms | Allocations: 23195)
+Completed 200 OK in 50ms (Views: 30.5ms | ActiveRecord: 4.1ms | Allocations: 31768)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-12 11:30:27 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:45
+  Rendered clients/index.html.erb within layouts/application (Duration: 10.6ms | Allocations: 5227)
+  Rendered layout layouts/application.html.erb (Duration: 29.1ms | Allocations: 23369)
+Completed 200 OK in 49ms (Views: 30.5ms | ActiveRecord: 2.9ms | Allocations: 31929)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-12 11:30:36 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:45
+  Rendered clients/index.html.erb within layouts/application (Duration: 10.9ms | Allocations: 5227)
+  Rendered layout layouts/application.html.erb (Duration: 29.7ms | Allocations: 23196)
+Completed 200 OK in 49ms (Views: 30.9ms | ActiveRecord: 3.6ms | Allocations: 31764)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-12 11:31:00 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:45
+  Rendered clients/index.html.erb within layouts/application (Duration: 10.6ms | Allocations: 5225)
+  Rendered layout layouts/application.html.erb (Duration: 30.2ms | Allocations: 23194)
+Completed 200 OK in 51ms (Views: 32.0ms | ActiveRecord: 3.7ms | Allocations: 31764)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 11:31:14 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 20.8ms | Allocations: 5042)
+  Rendered layout layouts/application.html.erb (Duration: 27.0ms | Allocations: 7022)
+Completed 200 OK in 45ms (Views: 27.3ms | ActiveRecord: 1.8ms | Allocations: 9725)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-12 11:31:18 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:45
+  Rendered clients/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1418)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 3256)
+Completed 200 OK in 10ms (Views: 6.1ms | ActiveRecord: 0.5ms | Allocations: 5027)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-12 11:42:44 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:45
+  Rendered clients/index.html.erb within layouts/application (Duration: 12.0ms | Allocations: 4799)
+  Rendered layout layouts/application.html.erb (Duration: 42.5ms | Allocations: 22912)
+Completed 200 OK in 63ms (Views: 44.2ms | ActiveRecord: 3.2ms | Allocations: 30942)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-12 11:43:13 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:45
+  Rendered clients/index.html.erb within layouts/application (Duration: 15.2ms | Allocations: 5236)
+  Rendered layout layouts/application.html.erb (Duration: 45.6ms | Allocations: 23408)
+Completed 200 OK in 81ms (Views: 46.5ms | ActiveRecord: 4.8ms | Allocations: 32011)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 11:43:48 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 10.3ms | Allocations: 5076)
+  Rendered layout layouts/application.html.erb (Duration: 30.2ms | Allocations: 23152)
+Completed 200 OK in 51ms (Views: 31.6ms | ActiveRecord: 3.1ms | Allocations: 31718)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 11:55:00 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 9.9ms | Allocations: 4619)
+  Rendered layout layouts/application.html.erb (Duration: 30.5ms | Allocations: 22728)
+Completed 200 OK in 50ms (Views: 32.2ms | ActiveRecord: 1.9ms | Allocations: 30752)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 11:55:20 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 19.8ms | Allocations: 5078)
+  Rendered layout layouts/application.html.erb (Duration: 49.4ms | Allocations: 23080)
+Completed 200 OK in 82ms (Views: 51.8ms | ActiveRecord: 7.8ms | Allocations: 31653)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 11:55:39 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 9.7ms | Allocations: 5080)
+  Rendered layout layouts/application.html.erb (Duration: 40.9ms | Allocations: 23049)
+Completed 200 OK in 70ms (Views: 43.9ms | ActiveRecord: 4.4ms | Allocations: 31643)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 11:56:47 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 12.2ms | Allocations: 5245)
+  Rendered layout layouts/application.html.erb (Duration: 33.0ms | Allocations: 23318)
+Completed 200 OK in 54ms (Views: 34.7ms | ActiveRecord: 2.8ms | Allocations: 31882)
+
+
+Started POST "/products/new" for 127.0.0.1 at 2024-01-12 11:56:52 -0300
+  
+ActionController::RoutingError (No route matches [POST] "/products/new"):
+  
+Started GET "/products/new" for 127.0.0.1 at 2024-01-12 11:56:57 -0300
+Processing by ProductsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 12.5ms | Allocations: 2163)
+  Rendered products/new.html.erb within layouts/application (Duration: 17.2ms | Allocations: 2446)
+  Rendered layout layouts/application.html.erb (Duration: 27.1ms | Allocations: 4466)
+Completed 200 OK in 43ms (Views: 29.9ms | ActiveRecord: 0.2ms | Allocations: 6431)
+
+
+Started POST "/products/new" for 127.0.0.1 at 2024-01-12 11:56:59 -0300
+  
+ActionController::RoutingError (No route matches [POST] "/products/new"):
+  
+Started GET "/products/new" for 127.0.0.1 at 2024-01-12 11:57:09 -0300
+Processing by ProductsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 7.0ms | Allocations: 1094)
+  Rendered products/new.html.erb within layouts/application (Duration: 7.7ms | Allocations: 1173)
+  Rendered layout layouts/application.html.erb (Duration: 17.2ms | Allocations: 3039)
+Completed 200 OK in 27ms (Views: 19.5ms | ActiveRecord: 0.2ms | Allocations: 4851)
+
+
+Started POST "/products/new" for 127.0.0.1 at 2024-01-12 11:57:14 -0300
+  
+ActionController::RoutingError (No route matches [POST] "/products/new"):
+  
+Started GET "/products" for 127.0.0.1 at 2024-01-12 11:58:02 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 26.8ms | Allocations: 9093)
+  Rendered layout layouts/application.html.erb (Duration: 27.2ms | Allocations: 9180)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 4.2ms | Allocations: 17831)
+
+
+  
+ActionView::Template::Error (undefined method `stringify_keys' for "get":String
+
+        html_options = html_options.stringify_keys
+                                   ^^^^^^^^^^^^^^^):
+    57:     </tbody>
+    58:   </table>
+    59:   <%= link_to "New product", new_product_path %>
+    60:   <%= button_to "New", new_product_path, method="get" %>
+    61: </div>
+  
+app/views/products/index.html.erb:60
+Started POST "/products/new" for 127.0.0.1 at 2024-01-12 11:58:03 -0300
+  
+ActionController::RoutingError (No route matches [POST] "/products/new"):
+  
+Started GET "/products" for 127.0.0.1 at 2024-01-12 11:58:19 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 19.5ms | Allocations: 5142)
+  Rendered layout layouts/application.html.erb (Duration: 104.7ms | Allocations: 23310)
+Completed 200 OK in 148ms (Views: 107.6ms | ActiveRecord: 3.9ms | Allocations: 31948)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2024-01-12 11:58:21 -0300
+Processing by ProductsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 10.3ms | Allocations: 1644)
+  Rendered products/new.html.erb within layouts/application (Duration: 11.9ms | Allocations: 1912)
+  Rendered layout layouts/application.html.erb (Duration: 16.8ms | Allocations: 3779)
+Completed 200 OK in 33ms (Views: 18.0ms | ActiveRecord: 0.4ms | Allocations: 5616)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2024-01-12 11:58:35 -0300
+Processing by ProductsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 3.9ms | Allocations: 1748)
+  Rendered products/new.html.erb within layouts/application (Duration: 5.5ms | Allocations: 2053)
+  Rendered layout layouts/application.html.erb (Duration: 24.4ms | Allocations: 20070)
+Completed 200 OK in 51ms (Views: 26.4ms | ActiveRecord: 2.7ms | Allocations: 32045)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 11:58:37 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1544)
+  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 3382)
+Completed 200 OK in 18ms (Views: 8.6ms | ActiveRecord: 0.6ms | Allocations: 5369)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 11:58:59 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 10.0ms | Allocations: 5147)
+  Rendered layout layouts/application.html.erb (Duration: 34.9ms | Allocations: 23197)
+Completed 200 OK in 56ms (Views: 37.1ms | ActiveRecord: 3.0ms | Allocations: 31767)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 11:59:08 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 11.6ms | Allocations: 5110)
+  Rendered layout layouts/application.html.erb (Duration: 32.9ms | Allocations: 23079)
+Completed 200 OK in 57ms (Views: 34.4ms | ActiveRecord: 3.8ms | Allocations: 31649)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 12:00:07 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 21.7ms | Allocations: 5111)
+  Rendered layout layouts/application.html.erb (Duration: 63.8ms | Allocations: 23080)
+Completed 200 OK in 119ms (Views: 70.0ms | ActiveRecord: 10.7ms | Allocations: 31682)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2024-01-12 12:00:24 -0300
+Processing by ProductsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 5.8ms | Allocations: 1644)
+  Rendered products/new.html.erb within layouts/application (Duration: 7.9ms | Allocations: 1911)
+  Rendered layout layouts/application.html.erb (Duration: 13.9ms | Allocations: 3748)
+Completed 200 OK in 19ms (Views: 14.6ms | ActiveRecord: 0.1ms | Allocations: 5612)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2024-01-12 12:00:26 -0300
+Processing by ProductsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 4.8ms | Allocations: 1083)
+  Rendered products/new.html.erb within layouts/application (Duration: 5.3ms | Allocations: 1162)
+  Rendered layout layouts/application.html.erb (Duration: 10.9ms | Allocations: 2999)
+Completed 200 OK in 19ms (Views: 11.7ms | ActiveRecord: 0.2ms | Allocations: 4619)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2024-01-12 12:00:38 -0300
+Processing by ProductsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 4.9ms | Allocations: 1083)
+  Rendered products/new.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1162)
+  Rendered layout layouts/application.html.erb (Duration: 9.9ms | Allocations: 2999)
+Completed 200 OK in 21ms (Views: 10.9ms | ActiveRecord: 0.2ms | Allocations: 4640)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 12:28:36 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 10.8ms | Allocations: 4653)
+  Rendered layout layouts/application.html.erb (Duration: 31.9ms | Allocations: 22622)
+Completed 200 OK in 51ms (Views: 33.4ms | ActiveRecord: 2.4ms | Allocations: 30648)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 12:28:55 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 12.3ms | Allocations: 5115)
+  Rendered layout layouts/application.html.erb (Duration: 32.7ms | Allocations: 23257)
+Completed 200 OK in 53ms (Views: 34.2ms | ActiveRecord: 3.2ms | Allocations: 31852)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 12:29:10 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 11.2ms | Allocations: 5111)
+  Rendered layout layouts/application.html.erb (Duration: 34.2ms | Allocations: 23195)
+Completed 200 OK in 53ms (Views: 36.3ms | ActiveRecord: 2.8ms | Allocations: 31775)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 12:29:22 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 11.9ms | Allocations: 5111)
+  Rendered layout layouts/application.html.erb (Duration: 30.6ms | Allocations: 23188)
+Completed 200 OK in 50ms (Views: 31.7ms | ActiveRecord: 3.1ms | Allocations: 31765)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 12:29:33 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 11.4ms | Allocations: 5110)
+  Rendered layout layouts/application.html.erb (Duration: 32.2ms | Allocations: 23079)
+Completed 200 OK in 53ms (Views: 33.2ms | ActiveRecord: 3.6ms | Allocations: 31667)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 12:30:01 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 10.5ms | Allocations: 5111)
+  Rendered layout layouts/application.html.erb (Duration: 29.4ms | Allocations: 23080)
+Completed 200 OK in 50ms (Views: 31.2ms | ActiveRecord: 2.9ms | Allocations: 31655)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 12:30:17 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 10.8ms | Allocations: 5113)
+  Rendered layout layouts/application.html.erb (Duration: 30.3ms | Allocations: 23255)
+Completed 200 OK in 50ms (Views: 31.8ms | ActiveRecord: 2.8ms | Allocations: 31850)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 12:30:27 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 13.9ms | Allocations: 5111)
+  Rendered layout layouts/application.html.erb (Duration: 43.1ms | Allocations: 23253)
+Completed 200 OK in 74ms (Views: 47.5ms | ActiveRecord: 3.5ms | Allocations: 31838)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 12:30:41 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 10.2ms | Allocations: 5111)
+  Rendered layout layouts/application.html.erb (Duration: 29.1ms | Allocations: 23195)
+Completed 200 OK in 49ms (Views: 30.6ms | ActiveRecord: 3.5ms | Allocations: 31787)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 12:30:56 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 18.3ms | Allocations: 5110)
+  Rendered layout layouts/application.html.erb (Duration: 46.2ms | Allocations: 23187)
+Completed 200 OK in 75ms (Views: 48.0ms | ActiveRecord: 3.7ms | Allocations: 31788)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 12:31:29 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 10.0ms | Allocations: 5112)
+  Rendered layout layouts/application.html.erb (Duration: 28.8ms | Allocations: 23081)
+Completed 200 OK in 52ms (Views: 30.0ms | ActiveRecord: 3.2ms | Allocations: 31654)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 12:31:38 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 10.3ms | Allocations: 5114)
+  Rendered layout layouts/application.html.erb (Duration: 29.2ms | Allocations: 23256)
+Completed 200 OK in 49ms (Views: 30.7ms | ActiveRecord: 2.9ms | Allocations: 31885)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 12:32:49 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 17.3ms | Allocations: 5112)
+  Rendered layout layouts/application.html.erb (Duration: 45.7ms | Allocations: 23254)
+Completed 200 OK in 68ms (Views: 46.7ms | ActiveRecord: 4.8ms | Allocations: 31818)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 12:33:13 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 11.3ms | Allocations: 5111)
+  Rendered layout layouts/application.html.erb (Duration: 30.7ms | Allocations: 23195)
+Completed 200 OK in 50ms (Views: 31.8ms | ActiveRecord: 3.5ms | Allocations: 31766)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 12:33:24 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 11.7ms | Allocations: 5111)
+  Rendered layout layouts/application.html.erb (Duration: 34.4ms | Allocations: 23188)
+Completed 200 OK in 56ms (Views: 35.8ms | ActiveRecord: 3.2ms | Allocations: 31756)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 12:33:33 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 10.0ms | Allocations: 5111)
+  Rendered layout layouts/application.html.erb (Duration: 28.7ms | Allocations: 23080)
+Completed 200 OK in 48ms (Views: 30.1ms | ActiveRecord: 2.7ms | Allocations: 31663)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 12:42:17 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 15.1ms | Allocations: 4656)
+  Rendered layout layouts/application.html.erb (Duration: 50.0ms | Allocations: 22798)
+Completed 200 OK in 81ms (Views: 51.9ms | ActiveRecord: 4.5ms | Allocations: 30879)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2024-01-12 12:42:18 -0300
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 11ms (ActiveRecord: 0.1ms | Allocations: 3239)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-12 12:42:18 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 779)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 2760)
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.0ms | Allocations: 3325)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-12 12:42:20 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.2ms | Allocations: 636)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 6.8ms | Allocations: 2005)
+  Rendered layout layouts/application.html.erb (Duration: 12.9ms | Allocations: 4017)
+Completed 200 OK in 22ms (Views: 18.4ms | ActiveRecord: 0.0ms | Allocations: 5315)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-12 12:42:31 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 4.4ms | Allocations: 215)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 9.7ms | Allocations: 966)
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | Allocations: 2799)
+Completed 200 OK in 19ms (Views: 17.8ms | ActiveRecord: 0.0ms | Allocations: 3542)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-12 12:44:06 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.9ms | Allocations: 636)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 5.5ms | Allocations: 2007)
+  Rendered layout layouts/application.html.erb (Duration: 24.3ms | Allocations: 20113)
+Completed 200 OK in 38ms (Views: 28.7ms | ActiveRecord: 2.0ms | Allocations: 26215)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-12 12:44:13 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.9ms | Allocations: 636)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 6.1ms | Allocations: 2006)
+  Rendered layout layouts/application.html.erb (Duration: 25.3ms | Allocations: 20053)
+Completed 200 OK in 38ms (Views: 28.8ms | ActiveRecord: 2.0ms | Allocations: 26162)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-12 12:44:48 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.7ms | Allocations: 636)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 5.0ms | Allocations: 2007)
+  Rendered layout layouts/application.html.erb (Duration: 25.1ms | Allocations: 20047)
+Completed 200 OK in 40ms (Views: 29.6ms | ActiveRecord: 2.5ms | Allocations: 26129)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-12 13:03:05 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "erick.resend@gmail.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 304ms (ActiveRecord: 2.4ms | Allocations: 7461)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-12 13:03:05 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/welcome/index.html.erb:17
+  Rendered welcome/index.html.erb within layouts/application (Duration: 6.5ms | Allocations: 1758)
+  Rendered layout layouts/application.html.erb (Duration: 28.4ms | Allocations: 19947)
+Completed 200 OK in 32ms (Views: 30.0ms | ActiveRecord: 0.2ms | Allocations: 21263)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-12 13:03:14 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:45
+  Rendered clients/index.html.erb within layouts/application (Duration: 11.2ms | Allocations: 5198)
+  Rendered layout layouts/application.html.erb (Duration: 16.4ms | Allocations: 7235)
+Completed 200 OK in 28ms (Views: 16.9ms | ActiveRecord: 1.2ms | Allocations: 9982)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:03:17 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 22.1ms | Allocations: 5078)
+  Rendered layout layouts/application.html.erb (Duration: 29.7ms | Allocations: 7058)
+Completed 200 OK in 49ms (Views: 31.2ms | ActiveRecord: 1.5ms | Allocations: 9780)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-12 13:03:19 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:45
+  Rendered clients/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1418)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | Allocations: 3256)
+Completed 200 OK in 20ms (Views: 10.3ms | ActiveRecord: 0.7ms | Allocations: 5027)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:03:26 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 946)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 2784)
+Completed 200 OK in 16ms (Views: 9.0ms | ActiveRecord: 0.4ms | Allocations: 4408)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2024-01-12 13:04:31 -0300
+Processing by ProductsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 5.0ms | Allocations: 1644)
+  Rendered products/new.html.erb within layouts/application (Duration: 7.6ms | Allocations: 1910)
+  Rendered layout layouts/application.html.erb (Duration: 14.1ms | Allocations: 3747)
+Completed 200 OK in 29ms (Views: 16.1ms | ActiveRecord: 0.6ms | Allocations: 5445)
+
+
+Started GET "/rails/info/routes" for 127.0.0.1 at 2024-01-12 13:05:35 -0300
+Processing by Rails::InfoController#routes as HTML
+  Rendering layout vendor/bundle/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/layouts/application.html.erb
+  Rendering vendor/bundle/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of vendor/bundle/ruby/3.1.0/gems/actionpack-7.1.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [59 times] (Duration: 21.0ms | Allocations: 10236)
+  Rendered vendor/bundle/ruby/3.1.0/gems/actionpack-7.1.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (Duration: 2.1ms | Allocations: 697)
+  Rendered vendor/bundle/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/rails/info/routes.html.erb within layouts/application (Duration: 46.4ms | Allocations: 17901)
+  Rendered layout vendor/bundle/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/layouts/application.html.erb (Duration: 47.7ms | Allocations: 18175)
+Completed 200 OK in 57ms (Views: 53.3ms | ActiveRecord: 0.0ms | Allocations: 19535)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-12 13:07:13 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/welcome/index.html.erb:17
+  Rendered welcome/index.html.erb within layouts/application (Duration: 12.4ms | Allocations: 5954)
+  Rendered layout layouts/application.html.erb (Duration: 30.7ms | Allocations: 24097)
+Completed 200 OK in 35ms (Views: 31.3ms | ActiveRecord: 2.1ms | Allocations: 25489)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:07:14 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:48
+  Rendered products/index.html.erb within layouts/application (Duration: 23.6ms | Allocations: 5081)
+  Rendered layout layouts/application.html.erb (Duration: 29.8ms | Allocations: 7061)
+Completed 200 OK in 49ms (Views: 30.4ms | ActiveRecord: 1.6ms | Allocations: 10590)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:08:24 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 16.9ms | Allocations: 6086)
+  Rendered layout layouts/application.html.erb (Duration: 17.4ms | Allocations: 6173)
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 7.7ms | Allocations: 14730)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"edit", :controller=>"clients", :id=>nil}, missing required keys: [:id]):
+    54:         <td> <%=product.quantity%> </td>
+    55:         <td> <%=product.category%> </td>
+    56:         <td>
+    57:           <%= button_to "Editar", edit_client_path(@client), class: "btn btn-primary"%>
+    58:         </td>
+    59:       </tr>
+    60:       <% end %>
+  
+app/views/products/index.html.erb:57
+app/views/products/index.html.erb:49
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:08:54 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 21.5ms | Allocations: 6063)
+  Rendered layout layouts/application.html.erb (Duration: 22.6ms | Allocations: 6150)
+Completed 500 Internal Server Error in 67ms (ActiveRecord: 4.7ms | Allocations: 14761)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"edit", :controller=>"clients", :id=>nil}, missing required keys: [:id]):
+    54:         <td> <%=product.quantity%> </td>
+    55:         <td> <%=product.category%> </td>
+    56:         <td>
+    57:           <%= link_to "Edit this client", edit_client_path(@client) %>
+    58:         </td>
+    59:       </tr>
+    60:       <% end %>
+  
+app/views/products/index.html.erb:57
+app/views/products/index.html.erb:49
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:09:33 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 12.4ms | Allocations: 6064)
+  Rendered layout layouts/application.html.erb (Duration: 12.9ms | Allocations: 6151)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 3.1ms | Allocations: 14767)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"edit", :controller=>"clients", :id=>nil}, missing required keys: [:id]):
+    54:         <td> <%=product.quantity%> </td>
+    55:         <td> <%=product.category%> </td>
+    56:         <td>
+    57:           <%= link_to "Edit this client", edit_client_path(@product) %>
+    58:         </td>
+    59:       </tr>
+    60:       <% end %>
+  
+app/views/products/index.html.erb:57
+app/views/products/index.html.erb:49
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:09:45 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 12.2ms | Allocations: 6100)
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 6187)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 3.5ms | Allocations: 14799)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"edit", :controller=>"products", :id=>nil}, missing required keys: [:id]):
+    54:         <td> <%=product.quantity%> </td>
+    55:         <td> <%=product.category%> </td>
+    56:         <td>
+    57:           <%= link_to "Edit this client", edit_product_path(@product) %>
+    58:         </td>
+    59:       </tr>
+    60:       <% end %>
+  
+app/views/products/index.html.erb:57
+app/views/products/index.html.erb:49
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:09:56 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 12.3ms | Allocations: 6271)
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | Allocations: 6358)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 3.0ms | Allocations: 14970)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"edit", :controller=>"products"}, missing required keys: [:id]
+Did you mean?  edit_product_url):
+    54:         <td> <%=product.quantity%> </td>
+    55:         <td> <%=product.category%> </td>
+    56:         <td>
+    57:           <%= link_to "Edit this client", edit_product_path %>
+    58:         </td>
+    59:       </tr>
+    60:       <% end %>
+  
+app/views/products/index.html.erb:57
+app/views/products/index.html.erb:49
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:10:05 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 12.2ms | Allocations: 5404)
+  Rendered layout layouts/application.html.erb (Duration: 35.9ms | Allocations: 23552)
+Completed 200 OK in 67ms (Views: 37.5ms | ActiveRecord: 3.4ms | Allocations: 32192)
+
+
+Started GET "/products/1/edit" for 127.0.0.1 at 2024-01-12 13:10:07 -0300
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:64:in `set_product'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 3.8ms | Allocations: 1716)
+  Rendered products/edit.html.erb within layouts/application (Duration: 5.9ms | Allocations: 2042)
+  Rendered layout layouts/application.html.erb (Duration: 10.4ms | Allocations: 3875)
+Completed 200 OK in 22ms (Views: 12.3ms | ActiveRecord: 0.3ms | Allocations: 6939)
+
+
+Started PATCH "/products/1" for 127.0.0.1 at 2024-01-12 13:10:34 -0300
+Processing by ProductsController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "product"=>{"code"=>"70121", "name"=>"Conjunto 56", "price"=>"56.0", "quantity"=>"1", "category"=>"Conjunto"}, "commit"=>"Update Product", "id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:64:in `set_product'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:41:in `block in update'
+  [1m[36mProduct Update (3.4ms)[0m  [1m[33mUPDATE "products" SET "name" = ?, "quantity" = ?, "category" = ?, "updated_at" = ? WHERE "products"."id" = ?[0m  [["name", "Conjunto 56"], ["quantity", 1], ["category", "Conjunto"], ["updated_at", "2024-01-12 16:10:34.627331"], ["id", 1]]
+  ↳ app/controllers/products_controller.rb:41:in `block in update'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:41:in `block in update'
+Redirected to http://127.0.0.1:3000/products/1
+Completed 302 Found in 23ms (ActiveRecord: 5.8ms | Allocations: 5381)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2024-01-12 13:10:34 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:64:in `set_product'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 1.5ms | Allocations: 283)
+  Rendered products/show.html.erb within layouts/application (Duration: 10.8ms | Allocations: 1150)
+  Rendered layout layouts/application.html.erb (Duration: 15.3ms | Allocations: 3098)
+Completed 200 OK in 23ms (Views: 16.3ms | ActiveRecord: 0.4ms | Allocations: 5335)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:10:38 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 5.4ms | Allocations: 1185)
+  Rendered layout layouts/application.html.erb (Duration: 14.4ms | Allocations: 3026)
+Completed 200 OK in 21ms (Views: 15.1ms | ActiveRecord: 0.3ms | Allocations: 4870)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:11:15 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 18.2ms | Allocations: 6208)
+  Rendered layout layouts/application.html.erb (Duration: 43.5ms | Allocations: 24150)
+Completed 200 OK in 79ms (Views: 46.3ms | ActiveRecord: 2.9ms | Allocations: 32715)
+
+
+Started POST "/products/1/edit" for 127.0.0.1 at 2024-01-12 13:11:16 -0300
+  
+ActionController::RoutingError (No route matches [POST] "/products/1/edit"):
+  
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:11:49 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  Rendered products/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1486)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1583)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 2.3ms | Allocations: 10201)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to "Início", root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Usuários</a>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Clientes", clients_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Produtos",  products_path, class: "nav-link" %>
+        </li>
+        <% if user_signed_in? %>
+            <li class="nav-item">
+                <%= link_to("Sair", destroy_user_session_path, method: :delete, class: "nav-link")%>
+            </li>
+        <% else %>
+            <li class="nav-item">
+                <%= link_to "Entrar", new_user_session_path, class: "nav-link"%>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<p style="color: green"><%= notice %></p>
+
+
+
+<div class="container mb-4" id="clients">
+  <h1 class="text-center">PRODUTOS</h1>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th class="table-primary" scope="col">Código</th>
+        <th class="table-primary" scope="col">Nome</th>
+        <th class="table-primary" scope="col">Preço</th>
+        <th class="table-primary" scope="col">Quantidade</th>
+        <th class="table-primary" scope="col">Categoria</th>
+        <th class="table-primary" scope="col">Botoes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+      <tr>
+        <th scope="row"> <%=product.code%> </th>
+        <td> <%=product.name%> </td>
+        <td> <%=product.price%> </td>
+        <td> <%=product.quantity%> </td>
+        <td> <%=product.category%> </td>
+        <td>
+          <%= button_to "Edit this client", method: :get, edit_product_path(product), class: "btn btn-primary" %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= button_to "Novo produto", new_product_path, method: :get, class: "btn btn-primary"%>
+</div>
+
+
+
+):
+1:    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+2:      <div class="container-fluid">
+3:        <div class="collapse navbar-collapse" id="navbarNav">
+4:          <ul class="navbar-nav">
+5:            <li class="nav-item">
+6:              <%= link_to "Início", root_path, class: "nav-link" %>
+7:            </li>
+8:            <li class="nav-item">
+9:              <a class="nav-link" href="#">Usuários</a>
+10:            </li>
+11:            <li class="nav-item">
+12:              <%= link_to "Clientes", clients_path, class: "nav-link" %>
+13:            </li>
+14:            <li class="nav-item">
+15:              <%= link_to "Produtos",  products_path, class: "nav-link" %>
+16:            </li>
+17:            <% if user_signed_in? %>
+18:                <li class="nav-item">
+19:                    <%= link_to("Sair", destroy_user_session_path, method: :delete, class: "nav-link")%>
+20:                </li>
+21:            <% else %>
+22:                <li class="nav-item">
+23:                    <%= link_to "Entrar", new_user_session_path, class: "nav-link"%>
+24:                </li>
+25:            <% end %>
+26:          </ul>
+27:        </div>
+28:      </div>
+29:    </nav>
+30:    
+31:    <p style="color: green"><%= notice %></p>
+32:    
+33:    
+34:    
+35:    <div class="container mb-4" id="clients">
+36:      <h1 class="text-center">PRODUTOS</h1>
+37:      <table class="table table-hover">
+38:        <thead>
+39:          <tr>
+40:            <th class="table-primary" scope="col">Código</th>
+41:            <th class="table-primary" scope="col">Nome</th>
+42:            <th class="table-primary" scope="col">Preço</th>
+43:            <th class="table-primary" scope="col">Quantidade</th>
+44:            <th class="table-primary" scope="col">Categoria</th>
+45:            <th class="table-primary" scope="col">Botoes</th>
+46:          </tr>
+47:        </thead>
+48:        <tbody>
+49:          <% @products.each do |product| %>
+50:          <tr>
+51:            <th scope="row"> <%=product.code%> </th>
+52:            <td> <%=product.name%> </td>
+53:            <td> <%=product.price%> </td>
+54:            <td> <%=product.quantity%> </td>
+55:            <td> <%=product.category%> </td>
+56:            <td>
+57:              <%= button_to "Edit this client", method: :get, edit_product_path(product), class: "btn btn-primary" %>
+58:            </td>
+59:          </tr>
+60:          <% end %>
+61:        </tbody>
+62:      </table>
+63:      <%= button_to "Novo produto", new_product_path, method: :get, class: "btn btn-primary"%>
+64:    </div>
+  
+app/views/products/index.html.erb:57: syntax error, unexpected ',', expecting =>
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:12:09 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 12.4ms | Allocations: 5610)
+  Rendered layout layouts/application.html.erb (Duration: 33.4ms | Allocations: 23752)
+Completed 200 OK in 56ms (Views: 35.4ms | ActiveRecord: 2.9ms | Allocations: 32415)
+
+
+Started GET "/products/1/edit" for 127.0.0.1 at 2024-01-12 13:12:10 -0300
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:64:in `set_product'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 7.2ms | Allocations: 1695)
+  Rendered products/edit.html.erb within layouts/application (Duration: 9.2ms | Allocations: 2014)
+  Rendered layout layouts/application.html.erb (Duration: 14.7ms | Allocations: 3847)
+Completed 200 OK in 31ms (Views: 16.9ms | ActiveRecord: 0.5ms | Allocations: 6855)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:12:18 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 19.7ms | Allocations: 5637)
+  Rendered layout layouts/application.html.erb (Duration: 50.2ms | Allocations: 23606)
+Completed 200 OK in 74ms (Views: 51.5ms | ActiveRecord: 3.6ms | Allocations: 32198)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:13:09 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 35.2ms | Allocations: 10483)
+  Rendered layout layouts/application.html.erb (Duration: 35.9ms | Allocations: 10570)
+Completed 500 Internal Server Error in 72ms (ActiveRecord: 4.7ms | Allocations: 19155)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `prduct' for #<ActionView::Base:0x00000000131bb8>
+
+          '.freeze; @output_buffer.append=( button_to "Deletar", prduct, method: :delete ); @output_buffer.safe_append='
+                                                                 ^^^^^^
+Did you mean?  product
+               @products):
+    55:         <td> <%=product.category%> </td>
+    56:         <td>
+    57:           <%= button_to "Editar", edit_product_path(product), method: :get, class: "btn btn-primary" %>
+    58:           <%= button_to "Deletar", prduct, method: :delete %>
+    59:         </td>
+    60:       </tr>
+    61:       <% end %>
+  
+app/views/products/index.html.erb:58
+app/views/products/index.html.erb:49
+Started GET "/rails/" for 127.0.0.1 at 2024-01-12 13:14:26 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/rails"):
+  
+Started GET "/rails/info/routes" for 127.0.0.1 at 2024-01-12 13:14:34 -0300
+Processing by Rails::InfoController#routes as HTML
+  Rendering layout vendor/bundle/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/layouts/application.html.erb
+  Rendering vendor/bundle/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of vendor/bundle/ruby/3.1.0/gems/actionpack-7.1.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [59 times] (Duration: 35.1ms | Allocations: 10236)
+  Rendered vendor/bundle/ruby/3.1.0/gems/actionpack-7.1.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (Duration: 2.5ms | Allocations: 697)
+  Rendered vendor/bundle/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/rails/info/routes.html.erb within layouts/application (Duration: 49.9ms | Allocations: 17945)
+  Rendered layout vendor/bundle/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/layouts/application.html.erb (Duration: 53.7ms | Allocations: 18216)
+Completed 200 OK in 63ms (Views: 58.3ms | ActiveRecord: 0.0ms | Allocations: 19372)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-12 13:16:18 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/welcome/index.html.erb:17
+  Rendered welcome/index.html.erb within layouts/application (Duration: 13.9ms | Allocations: 6023)
+  Rendered layout layouts/application.html.erb (Duration: 34.5ms | Allocations: 24166)
+Completed 200 OK in 38ms (Views: 33.5ms | ActiveRecord: 2.9ms | Allocations: 25553)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:16:19 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 25.8ms | Allocations: 8187)
+  Rendered layout layouts/application.html.erb (Duration: 32.5ms | Allocations: 10144)
+Completed 200 OK in 52ms (Views: 33.9ms | ActiveRecord: 1.0ms | Allocations: 13651)
+
+
+Started DELETE "/products" for 127.0.0.1 at 2024-01-12 13:16:23 -0300
+  
+ActionController::RoutingError (No route matches [DELETE] "/products"):
+  
+Started GET "/" for 127.0.0.1 at 2024-01-12 13:16:51 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/welcome/index.html.erb:17
+  Rendered welcome/index.html.erb within layouts/application (Duration: 12.4ms | Allocations: 5988)
+  Rendered layout layouts/application.html.erb (Duration: 37.0ms | Allocations: 24131)
+Completed 200 OK in 41ms (Views: 37.0ms | ActiveRecord: 2.3ms | Allocations: 25521)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:16:52 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 24.9ms | Allocations: 10470)
+  Rendered layout layouts/application.html.erb (Duration: 25.7ms | Allocations: 10556)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 1.5ms | Allocations: 14024)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `prduct' for #<ActionView::Base:0x00000000142a08>
+
+          '.freeze; @output_buffer.append=( button_to "Deletar", prduct.id, method: :delete ); @output_buffer.safe_append='
+                                                                 ^^^^^^
+Did you mean?  product
+               @products):
+    55:         <td> <%=product.category%> </td>
+    56:         <td>
+    57:           <%= button_to "Editar", edit_product_path(product), method: :get, class: "btn btn-primary" %>
+    58:           <%= button_to "Deletar", prduct.id, method: :delete %>
+    59:         </td>
+    60:       </tr>
+    61:       <% end %>
+  
+app/views/products/index.html.erb:58
+app/views/products/index.html.erb:49
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:17:24 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 19.3ms | Allocations: 8210)
+  Rendered layout layouts/application.html.erb (Duration: 49.3ms | Allocations: 26325)
+Completed 200 OK in 80ms (Views: 51.8ms | ActiveRecord: 7.1ms | Allocations: 34940)
+
+
+Started DELETE "/products" for 127.0.0.1 at 2024-01-12 13:17:26 -0300
+  
+ActionController::RoutingError (No route matches [DELETE] "/products"):
+  
+Started GET "/" for 127.0.0.1 at 2024-01-12 13:18:55 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/welcome/index.html.erb:17
+  Rendered welcome/index.html.erb within layouts/application (Duration: 14.1ms | Allocations: 5976)
+  Rendered layout layouts/application.html.erb (Duration: 34.2ms | Allocations: 24120)
+Completed 200 OK in 37ms (Views: 33.8ms | ActiveRecord: 2.4ms | Allocations: 25510)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:18:56 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 30.9ms | Allocations: 10468)
+  Rendered layout layouts/application.html.erb (Duration: 31.4ms | Allocations: 10554)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 1.8ms | Allocations: 14047)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `prduct' for #<ActionView::Base:0x0000000014def8>
+
+          '.freeze; @output_buffer.append=( button_to "Deletar", prduct, method: :delete ); @output_buffer.safe_append='
+                                                                 ^^^^^^
+Did you mean?  product
+               @products):
+    55:         <td> <%=product.category%> </td>
+    56:         <td>
+    57:           <%= button_to "Editar", edit_product_path(product), method: :get, class: "btn btn-primary" %>
+    58:           <%= button_to "Deletar", prduct, method: :delete %>
+    59:         </td>
+    60:       </tr>
+    61:       <% end %>
+  
+app/views/products/index.html.erb:58
+app/views/products/index.html.erb:49
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:19:27 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 23.7ms | Allocations: 9845)
+  Rendered layout layouts/application.html.erb (Duration: 24.4ms | Allocations: 9932)
+Completed 500 Internal Server Error in 52ms (ActiveRecord: 2.9ms | Allocations: 18547)
+
+
+  
+ActionView::Template::Error (undefined method `to_model' for #<ActiveRecord::Relation [#<Product id: 1, code: 70121, name: "Conjunto 56", price: 56.0, quantity: 1, category: "Conjunto", created_at: "2024-01-12 02:00:35.953178000 +0000", updated_at: "2024-01-12 16:10:34.627331000 +0000">, #<Product id: 2, code: 65477, name: "Isidra Bayer", price: 77.0, quantity: nil, category: "Cbp\u{39283}q", created_at: "2024-01-12 02:00:35.960184000 +0000", updated_at: "2024-01-12 02:00:35.960184000 +0000">, #<Product id: 3, code: 72326, name: "Porfirio Bahringer CPA", price: 27.0, quantity: nil, category: " \u{4B3CB}6\u{9006F}E\u{5CB36}", created_at: "2024-01-12 02:00:35.966648000 +0000", updated_at: "2024-01-12 02:00:35.966648000 +0000">, #<Product id: 4, code: 94230, name: "Wilbur Wisoky Jr.", price: 86.0, quantity: nil, category: "焅JẰ\u{DFA7B}6$⭕", created_at: "2024-01-12 02:00:35.973259000 +0000", updated_at: "2024-01-12 02:00:35.973259000 +0000">, #<Product id: 5, code: 31893, name: "Miss Denny Lind", price: 43.0, quantity: nil, category: "  Z떞\u{45026}\b", created_at: "2024-01-12 02:00:35.979771000 +0000", updated_at: "2024-01-12 02:00:35.979771000 +0000">, #<Product id: 6, code: 91975, name: "Kendall Kuhic", price: 55.0, quantity: nil, category: "시獅♦\u{ED0C1}뾅\u{9EB51}9\"", created_at: "2024-01-12 02:00:35.986138000 +0000", updated_at: "2024-01-12 02:00:35.986138000 +0000">, #<Product id: 7, code: 29678, name: "Jordan Reilly", price: 56.0, quantity: nil, category: "I \u{6291F}, 텬󾓸S", created_at: "2024-01-12 02:00:35.992483000 +0000", updated_at: "2024-01-12 02:00:35.992483000 +0000">, #<Product id: 8, code: 30896, name: "Bryon Jast", price: 35.0, quantity: nil, category: " Z\u{12DBA}ꪰ6", created_at: "2024-01-12 02:00:35.998765000 +0000", updated_at: "2024-01-12 02:00:35.998765000 +0000">, #<Product id: 9, code: 78312, name: "Mariette Wisoky", price: 11.0, quantity: nil, category: "갏W\u000Fបt", created_at: "2024-01-12 02:00:36.003303000 +0000", updated_at: "2024-01-12 02:00:36.003303000 +0000">, #<Product id: 10, code: 52958, name: "Jody McClure", price: 89.0, quantity: nil, category: "/\\N\b\u{657E0}掯#", created_at: "2024-01-12 02:00:36.007835000 +0000", updated_at: "2024-01-12 02:00:36.007835000 +0000">]>
+Did you mean?  to_xml):
+    55:         <td> <%=product.category%> </td>
+    56:         <td>
+    57:           <%= button_to "Editar", edit_product_path(product), method: :get, class: "btn btn-primary" %>
+    58:           <%= button_to "Deletar", @products, method: :delete %>
+    59:         </td>
+    60:       </tr>
+    61:       <% end %>
+  
+app/views/products/index.html.erb:58
+app/views/products/index.html.erb:49
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:19:46 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 19.7ms | Allocations: 8227)
+  Rendered layout layouts/application.html.erb (Duration: 48.1ms | Allocations: 26342)
+Completed 200 OK in 74ms (Views: 50.1ms | ActiveRecord: 3.5ms | Allocations: 34982)
+
+
+Started POST "/products?method=delete" for 127.0.0.1 at 2024-01-12 13:19:48 -0300
+Processing by ProductsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "method"=>"delete"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 400 Bad Request in 13ms (ActiveRecord: 0.5ms | Allocations: 2122)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: product):
+  
+app/controllers/products_controller.rb:69:in `product_params'
+app/controllers/products_controller.rb:25:in `create'
+Started GET "/rails/info/routes" for 127.0.0.1 at 2024-01-12 13:20:08 -0300
+Processing by Rails::InfoController#routes as HTML
+  Rendering layout vendor/bundle/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/layouts/application.html.erb
+  Rendering vendor/bundle/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of vendor/bundle/ruby/3.1.0/gems/actionpack-7.1.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [59 times] (Duration: 22.4ms | Allocations: 10236)
+  Rendered vendor/bundle/ruby/3.1.0/gems/actionpack-7.1.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (Duration: 1.0ms | Allocations: 697)
+  Rendered vendor/bundle/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/rails/info/routes.html.erb within layouts/application (Duration: 37.7ms | Allocations: 17975)
+  Rendered layout vendor/bundle/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/layouts/application.html.erb (Duration: 38.8ms | Allocations: 18246)
+Completed 200 OK in 49ms (Views: 43.4ms | ActiveRecord: 0.0ms | Allocations: 19371)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-12 13:20:41 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/welcome/index.html.erb:17
+  Rendered welcome/index.html.erb within layouts/application (Duration: 18.7ms | Allocations: 6008)
+  Rendered layout layouts/application.html.erb (Duration: 52.4ms | Allocations: 24151)
+Completed 200 OK in 57ms (Views: 51.7ms | ActiveRecord: 3.3ms | Allocations: 25537)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:20:44 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 17.6ms | Allocations: 6844)
+  Rendered layout layouts/application.html.erb (Duration: 21.0ms | Allocations: 8860)
+Completed 200 OK in 36ms (Views: 21.2ms | ActiveRecord: 0.9ms | Allocations: 12375)
+
+
+Started DELETE "/products/2" for 127.0.0.1 at 2024-01-12 13:20:45 -0300
+Processing by ProductsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"2"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:64:in `set_product'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:53:in `destroy'
+  [1m[36mProduct Destroy (2.3ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/products_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:53:in `destroy'
+Redirected to http://127.0.0.1:3000/products
+Completed 302 Found in 20ms (ActiveRecord: 5.4ms | Allocations: 4703)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:20:45 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 7.8ms | Allocations: 2408)
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | Allocations: 4245)
+Completed 200 OK in 18ms (Views: 13.2ms | ActiveRecord: 0.4ms | Allocations: 5897)
+
+
+Started DELETE "/products/3" for 127.0.0.1 at 2024-01-12 13:20:48 -0300
+Processing by ProductsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"3"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:64:in `set_product'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:53:in `destroy'
+  [1m[36mProduct Destroy (1.0ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/products_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:53:in `destroy'
+Redirected to http://127.0.0.1:3000/products
+Completed 302 Found in 8ms (ActiveRecord: 1.3ms | Allocations: 3696)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:20:48 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 6.6ms | Allocations: 2224)
+  Rendered layout layouts/application.html.erb (Duration: 14.6ms | Allocations: 4061)
+Completed 200 OK in 26ms (Views: 16.5ms | ActiveRecord: 0.3ms | Allocations: 5702)
+
+
+Started DELETE "/products/4" for 127.0.0.1 at 2024-01-12 13:20:49 -0300
+Processing by ProductsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"4"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:64:in `set_product'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:53:in `destroy'
+  [1m[36mProduct Destroy (4.7ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/products_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:53:in `destroy'
+Redirected to http://127.0.0.1:3000/products
+Completed 302 Found in 27ms (ActiveRecord: 5.7ms | Allocations: 3739)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:20:49 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 6.2ms | Allocations: 2041)
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | Allocations: 3878)
+Completed 200 OK in 15ms (Views: 11.6ms | ActiveRecord: 0.4ms | Allocations: 5512)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:21:33 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 13.4ms | Allocations: 6338)
+  Rendered layout layouts/application.html.erb (Duration: 32.2ms | Allocations: 24394)
+Completed 200 OK in 52ms (Views: 33.5ms | ActiveRecord: 2.8ms | Allocations: 32964)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:22:35 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 33.9ms | Allocations: 6336)
+  Rendered layout layouts/application.html.erb (Duration: 62.7ms | Allocations: 24279)
+Completed 200 OK in 103ms (Views: 64.2ms | ActiveRecord: 6.3ms | Allocations: 32881)
+
+
+Started DELETE "/products/5" for 127.0.0.1 at 2024-01-12 13:22:41 -0300
+Processing by ProductsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"5"}
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:64:in `set_product'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:53:in `destroy'
+  [1m[36mProduct Destroy (3.6ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 5]]
+  ↳ app/controllers/products_controller.rb:53:in `destroy'
+  [1m[36mTRANSACTION (8.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:53:in `destroy'
+Redirected to http://127.0.0.1:3000/products
+Completed 302 Found in 37ms (ActiveRecord: 12.9ms | Allocations: 4670)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:22:41 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1883)
+  Rendered layout layouts/application.html.erb (Duration: 17.3ms | Allocations: 3779)
+Completed 200 OK in 22ms (Views: 18.6ms | ActiveRecord: 0.2ms | Allocations: 5425)
+
+
+Started GET "/products/6/edit" for 127.0.0.1 at 2024-01-12 13:22:46 -0300
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:64:in `set_product'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 9.1ms | Allocations: 1678)
+  Rendered products/edit.html.erb within layouts/application (Duration: 11.0ms | Allocations: 1997)
+  Rendered layout layouts/application.html.erb (Duration: 16.3ms | Allocations: 3830)
+Completed 200 OK in 27ms (Views: 17.3ms | ActiveRecord: 0.4ms | Allocations: 6016)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:23:15 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 48.7ms | Allocations: 1880)
+  Rendered layout layouts/application.html.erb (Duration: 58.4ms | Allocations: 3776)
+Completed 200 OK in 64ms (Views: 59.8ms | ActiveRecord: 0.6ms | Allocations: 5404)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:23:54 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 7.8ms | Allocations: 1880)
+  Rendered layout layouts/application.html.erb (Duration: 13.9ms | Allocations: 3717)
+Completed 200 OK in 19ms (Views: 14.4ms | ActiveRecord: 0.5ms | Allocations: 5320)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:25:32 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 14.4ms | Allocations: 6243)
+  Rendered layout layouts/application.html.erb (Duration: 14.9ms | Allocations: 6330)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 3.7ms | Allocations: 14959)
+
+
+  
+ActionView::Template::Error ('nil' is not an ActiveModel-compatible object. It must implement :to_partial_path.):
+    56:         <td>
+    57:           <%= button_to "Editar", edit_product_path(product), method: :get, class: "btn btn-primary" %>
+    58:           <%= button_to "Deletar", product_path(product.id), method: :delete, class: "btn btn-danger" %>
+    59:           <%= render @product %>
+    60:         </td>
+    61:       </tr>
+    62:       <% end %>
+  
+app/views/products/index.html.erb:59
+app/views/products/index.html.erb:49
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:26:20 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 18.0ms | Allocations: 6148)
+  Rendered layout layouts/application.html.erb (Duration: 46.6ms | Allocations: 24263)
+Completed 200 OK in 82ms (Views: 48.2ms | ActiveRecord: 5.0ms | Allocations: 32911)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2024-01-12 13:26:26 -0300
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 17ms (ActiveRecord: 0.2ms | Allocations: 2484)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-12 13:26:26 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 6.3ms | Allocations: 779)
+  Rendered layout layouts/application.html.erb (Duration: 15.2ms | Allocations: 2760)
+Completed 200 OK in 17ms (Views: 16.6ms | ActiveRecord: 0.0ms | Allocations: 3324)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-12 13:26:28 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 3.0ms | Allocations: 636)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 11.6ms | Allocations: 2004)
+  Rendered layout layouts/application.html.erb (Duration: 19.2ms | Allocations: 4016)
+Completed 200 OK in 29ms (Views: 27.2ms | ActiveRecord: 0.0ms | Allocations: 5288)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-12 13:26:30 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "erick.resend@gmail.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 304ms (ActiveRecord: 0.9ms | Allocations: 3122)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-12 13:26:30 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/welcome/index.html.erb:17
+  Rendered welcome/index.html.erb within layouts/application (Duration: 9.4ms | Allocations: 1124)
+  Rendered layout layouts/application.html.erb (Duration: 12.8ms | Allocations: 2967)
+Completed 200 OK in 14ms (Views: 13.2ms | ActiveRecord: 0.3ms | Allocations: 3214)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-12 13:26:47 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/welcome/index.html.erb:17
+  Rendered welcome/index.html.erb within layouts/application (Duration: 17.5ms | Allocations: 5985)
+  Rendered layout layouts/application.html.erb (Duration: 49.9ms | Allocations: 24129)
+Completed 200 OK in 60ms (Views: 55.3ms | ActiveRecord: 2.4ms | Allocations: 25546)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-12 13:27:10 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/welcome/index.html.erb:17
+  Rendered welcome/index.html.erb within layouts/application (Duration: 21.8ms | Allocations: 5981)
+  Rendered layout layouts/application.html.erb (Duration: 48.0ms | Allocations: 23952)
+Completed 200 OK in 53ms (Views: 47.2ms | ActiveRecord: 3.3ms | Allocations: 25349)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-12 13:27:15 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/welcome/index.html.erb:17
+  Rendered welcome/index.html.erb within layouts/application (Duration: 14.7ms | Allocations: 5973)
+  Rendered layout layouts/application.html.erb (Duration: 36.7ms | Allocations: 24116)
+Completed 200 OK in 40ms (Views: 36.6ms | ActiveRecord: 2.1ms | Allocations: 25502)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-12 13:27:33 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/welcome/index.html.erb:17
+  Rendered welcome/index.html.erb within layouts/application (Duration: 15.0ms | Allocations: 6028)
+  Rendered layout layouts/application.html.erb (Duration: 44.8ms | Allocations: 24179)
+Completed 200 OK in 48ms (Views: 43.8ms | ActiveRecord: 3.0ms | Allocations: 25585)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-12 13:27:41 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/welcome/index.html.erb:17
+  Rendered welcome/index.html.erb within layouts/application (Duration: 12.2ms | Allocations: 5984)
+  Rendered layout layouts/application.html.erb (Duration: 33.6ms | Allocations: 23955)
+Completed 200 OK in 37ms (Views: 33.6ms | ActiveRecord: 2.2ms | Allocations: 25345)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-12 13:27:45 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/welcome/index.html.erb:17
+  Rendered welcome/index.html.erb within layouts/application (Duration: 13.4ms | Allocations: 5976)
+  Rendered layout layouts/application.html.erb (Duration: 47.1ms | Allocations: 24148)
+Completed 200 OK in 51ms (Views: 47.1ms | ActiveRecord: 2.0ms | Allocations: 25535)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:28:35 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 18.8ms | Allocations: 6138)
+  Rendered layout layouts/application.html.erb (Duration: 23.1ms | Allocations: 8124)
+Completed 200 OK in 40ms (Views: 23.8ms | ActiveRecord: 1.3ms | Allocations: 11653)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-12 13:28:38 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/welcome/index.html.erb:17
+  Rendered welcome/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1257)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 3120)
+Completed 200 OK in 6ms (Views: 6.0ms | ActiveRecord: 0.1ms | Allocations: 3370)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:28:40 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 1881)
+  Rendered layout layouts/application.html.erb (Duration: 11.5ms | Allocations: 3752)
+Completed 200 OK in 17ms (Views: 13.0ms | ActiveRecord: 0.2ms | Allocations: 5368)
+
+
+Started GET "/products/1/edit" for 127.0.0.1 at 2024-01-12 13:29:01 -0300
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:64:in `set_product'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 4.1ms | Allocations: 1679)
+  Rendered products/edit.html.erb within layouts/application (Duration: 6.9ms | Allocations: 1998)
+  Rendered layout layouts/application.html.erb (Duration: 17.1ms | Allocations: 3831)
+Completed 200 OK in 27ms (Views: 17.9ms | ActiveRecord: 0.4ms | Allocations: 6687)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2024-01-12 13:29:04 -0300
+Processing by ProductsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 2.1ms | Allocations: 1084)
+  Rendered products/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1286)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | Allocations: 3123)
+Completed 200 OK in 16ms (Views: 8.4ms | ActiveRecord: 0.1ms | Allocations: 4799)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:30:14 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 13.7ms | Allocations: 6148)
+  Rendered layout layouts/application.html.erb (Duration: 37.4ms | Allocations: 24204)
+Completed 200 OK in 64ms (Views: 44.0ms | ActiveRecord: 3.5ms | Allocations: 32779)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2024-01-12 13:30:18 -0300
+Processing by ProductsController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 8.7ms | Allocations: 1633)
+  Rendered products/new.html.erb within layouts/application (Duration: 11.4ms | Allocations: 1904)
+  Rendered layout layouts/application.html.erb (Duration: 19.3ms | Allocations: 3741)
+Completed 200 OK in 33ms (Views: 20.8ms | ActiveRecord: 0.6ms | Allocations: 5608)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2024-01-12 13:30:22 -0300
+Processing by ProductsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 3.7ms | Allocations: 1083)
+  Rendered products/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 1162)
+  Rendered layout layouts/application.html.erb (Duration: 11.4ms | Allocations: 2999)
+Completed 200 OK in 21ms (Views: 12.6ms | ActiveRecord: 0.2ms | Allocations: 4628)
+
+
+Started GET "/products/7/edit" for 127.0.0.1 at 2024-01-12 13:31:06 -0300
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:64:in `set_product'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 8.9ms | Allocations: 1806)
+  Rendered products/edit.html.erb within layouts/application (Duration: 10.1ms | Allocations: 2168)
+  Rendered layout layouts/application.html.erb (Duration: 47.1ms | Allocations: 20277)
+Completed 200 OK in 88ms (Views: 49.2ms | ActiveRecord: 3.6ms | Allocations: 33667)
+
+
+Started GET "/products/7" for 127.0.0.1 at 2024-01-12 13:31:07 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:64:in `set_product'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 1.3ms | Allocations: 230)
+  Rendered products/show.html.erb within layouts/application (Duration: 4.8ms | Allocations: 802)
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | Allocations: 2667)
+Completed 200 OK in 18ms (Views: 12.0ms | ActiveRecord: 0.2ms | Allocations: 5125)
+
+
+Started GET "/products/7/edit" for 127.0.0.1 at 2024-01-12 13:31:18 -0300
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:64:in `set_product'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 4.6ms | Allocations: 1128)
+  Rendered products/edit.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1234)
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | Allocations: 3067)
+Completed 200 OK in 24ms (Views: 12.6ms | ActiveRecord: 0.4ms | Allocations: 5196)
+
+
+Started GET "/products/7" for 127.0.0.1 at 2024-01-12 13:31:46 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:64:in `set_product'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered products/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 290)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 2123)
+Completed 200 OK in 12ms (Views: 5.9ms | ActiveRecord: 0.2ms | Allocations: 4249)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-12 13:31:53 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:49
+  Rendered products/index.html.erb within layouts/application (Duration: 15.3ms | Allocations: 2440)
+  Rendered layout layouts/application.html.erb (Duration: 21.8ms | Allocations: 4277)
+Completed 200 OK in 31ms (Views: 23.1ms | ActiveRecord: 0.9ms | Allocations: 5975)
+
+

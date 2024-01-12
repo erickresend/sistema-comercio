@@ -11,7 +11,7 @@
 10.times do |i|
   client_name = Faker::Name.name
   client_email = Faker::Internet.email
-  client_phone = Faker::PhoneNumber
+  client_phone = Faker::PhoneNumber.phone_number
   client_address = Faker::Address.full_address
   Client.create(name: client_name, email: client_email, phone: client_phone, address: client_address)
 end
