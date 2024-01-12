@@ -1,0 +1,24 @@
+current directory: /home/erick/Documents/estudos-ruby-on-rails/comercio/vendor/bundle/ruby/3.1.0/gems/io-console-0.7.1/ext/io/console
+/home/erick/.rbenv/versions/3.1.4/bin/ruby -I /home/erick/.rbenv/versions/3.1.4/lib/ruby/3.1.0 extconf.rb
+checking for rb_io_path()... no
+checking for rb_io_descriptor()... yes
+checking for rb_io_get_write_io()... yes
+checking for rb_io_closed_p()... no
+checking for rb_io_open_descriptor()... no
+checking for termios.h... yes
+checking for cfmakeraw() in termios.h... yes
+checking for sys/ioctl.h... yes
+checking for HAVE_RUBY_FIBER_SCHEDULER_H... yes
+creating Makefile
+
+current directory: /home/erick/Documents/estudos-ruby-on-rails/comercio/vendor/bundle/ruby/3.1.0/gems/io-console-0.7.1/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20240111-21156-rw539d sitelibdir\=./.gem.20240111-21156-rw539d clean
+
+current directory: /home/erick/Documents/estudos-ruby-on-rails/comercio/vendor/bundle/ruby/3.1.0/gems/io-console-0.7.1/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20240111-21156-rw539d sitelibdir\=./.gem.20240111-21156-rw539d
+compiling console.c
+linking shared-object io/console.so
+
+current directory: /home/erick/Documents/estudos-ruby-on-rails/comercio/vendor/bundle/ruby/3.1.0/gems/io-console-0.7.1/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20240111-21156-rw539d sitelibdir\=./.gem.20240111-21156-rw539d install
+/usr/bin/install -c -m 0755 console.so ./.gem.20240111-21156-rw539d/io

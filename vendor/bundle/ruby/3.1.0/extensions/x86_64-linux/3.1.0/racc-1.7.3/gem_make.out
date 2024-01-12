@@ -1,0 +1,15 @@
+current directory: /home/erick/Documents/estudos-ruby-on-rails/comercio/vendor/bundle/ruby/3.1.0/gems/racc-1.7.3/ext/racc/cparse
+/home/erick/.rbenv/versions/3.1.4/bin/ruby -I /home/erick/.rbenv/versions/3.1.4/lib/ruby/3.1.0 extconf.rb
+creating Makefile
+
+current directory: /home/erick/Documents/estudos-ruby-on-rails/comercio/vendor/bundle/ruby/3.1.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240111-21156-oak0mh sitelibdir\=./.gem.20240111-21156-oak0mh clean
+
+current directory: /home/erick/Documents/estudos-ruby-on-rails/comercio/vendor/bundle/ruby/3.1.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240111-21156-oak0mh sitelibdir\=./.gem.20240111-21156-oak0mh
+compiling cparse.c
+linking shared-object racc/cparse.so
+
+current directory: /home/erick/Documents/estudos-ruby-on-rails/comercio/vendor/bundle/ruby/3.1.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240111-21156-oak0mh sitelibdir\=./.gem.20240111-21156-oak0mh install
+/usr/bin/install -c -m 0755 cparse.so ./.gem.20240111-21156-oak0mh/racc

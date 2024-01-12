@@ -1,0 +1,16 @@
+current directory: /home/erick/Documents/estudos-ruby-on-rails/comercio/vendor/bundle/ruby/3.1.0/gems/debug-1.9.1/ext/debug
+/home/erick/.rbenv/versions/3.1.4/bin/ruby -I /home/erick/.rbenv/versions/3.1.4/lib/ruby/3.1.0 extconf.rb
+creating Makefile
+
+current directory: /home/erick/Documents/estudos-ruby-on-rails/comercio/vendor/bundle/ruby/3.1.0/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240111-21156-k1z52u sitelibdir\=./.gem.20240111-21156-k1z52u clean
+
+current directory: /home/erick/Documents/estudos-ruby-on-rails/comercio/vendor/bundle/ruby/3.1.0/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240111-21156-k1z52u sitelibdir\=./.gem.20240111-21156-k1z52u
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/erick/Documents/estudos-ruby-on-rails/comercio/vendor/bundle/ruby/3.1.0/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240111-21156-k1z52u sitelibdir\=./.gem.20240111-21156-k1z52u install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20240111-21156-k1z52u/debug
