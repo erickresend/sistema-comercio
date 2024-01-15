@@ -1,56 +1,30 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <%= link_to "Início", root_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Usuários</a>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Clientes", clients_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Produtos",  products_path, class: "nav-link" %>
-        </li>
-        <% if user_signed_in? %>
-            <li class="nav-item">
-                <%= link_to("Sair", destroy_user_session_path, method: :delete, class: "nav-link")%>
-            </li>
-        <% else %>
-            <li class="nav-item">
-                <%= link_to "Entrar", new_user_session_path, class: "nav-link"%>
-            </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</nav>
-
 <p style="color: green"><%= notice %></p>
 
-<div class="container" id="clients">
-  <h1 class="text-center">CLIENTES</h1>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Nome</th>
-        <th scope="col">Email</th>
-        <th scope="col">Telefone</th>
-        <th scope="col">Endereço</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @clients.each do |client| %>
-      <tr>
-        <th scope="row"> <%=client.name%> </th>
-        <td> <%=client.email%> </td>
-        <td> <%=client.phone%> </td>
-        <td> <%=client.address%> </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+<%= form_tag(clients_path, method: :get) do %>
+  <%= text_field_tag 'search', nil, placeholder: 'Digite o nome do cliente' %>
+  <%= submit_tag "Pesquisar" %>
+<% end %>
+
+<h1>CLIENTES</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Telefone</th>
+      <th>Endereço</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @clients.each do |client| %>
+    <tr>
+      <td> <%=client.name%> </td>
+      <td> <%=client.email%> </td>
+      <td> <%=client.phone%> </td>
+      <td> <%=client.address%> </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 <%= link_to "New client", new_client_path %>
+

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :products
   resources :clients
+  get 'users', to: 'users#index'
+  get 'edit_user', to: 'users#edit'
   root 'welcome#index'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

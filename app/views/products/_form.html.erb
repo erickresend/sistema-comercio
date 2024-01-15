@@ -1,42 +1,51 @@
-<%= form_with(model: product) do |form| %>
-  <% if product.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<div class="container">
+  <%= form_with(model: product) do |form| %>
+    <% if product.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-      <ul>
-        <% product.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <ul>
+          <% product.errors.each do |error| %>
+            <li><%= error.full_mes.sage %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <form>
+      <div class="py-1">
+        <%= form.label t(:code), class: "form-label" %>
+        <%= form.number_field :code, class: "form-control" %>
+      </div>
+
+      <div class="py-1">
+        <%= form.label t(:name), class: "form-label" %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="py-1 row">
+        <div class="col">
+          <%= form.label t(:price), class: "form-label" %>
+          <%= form.text_field :price, class: "form-control" %>
+        </div>
+        <div class="col">
+          <%= form.label t(:quantity), class: "form-label" %>
+          <%= form.number_field :quantity, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="py-1">
+        <%= form.label t(:category), class: "form-label" %>
+        <%= form.text_field :category, class: "form-control" %>
+      </div>
+
+      <div class="py-2">
+        <% if product.id %>
+          <%= form.submit "Editar", class: "btn btn-primary" %>
+        <% else %>
+          <%= form.submit "Cadastrar", class: "btn btn-primary" %>
         <% end %>
-      </ul>
-    </div>
+      </div>
+    </form>
   <% end %>
-
-  <div>
-    <%= form.label :code, style: "display: block" %>
-    <%= form.number_field :code %>
-  </div>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :price, style: "display: block" %>
-    <%= form.text_field :price %>
-  </div>
-
-  <div>
-    <%= form.label :quantity, style: "display: block" %>
-    <%= form.number_field :quantity %>
-  </div>
-
-  <div>
-    <%= form.label :category, style: "display: block" %>
-    <%= form.text_field :category %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

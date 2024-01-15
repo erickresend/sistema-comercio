@@ -1,0 +1,12 @@
+pt-br:
+
+  #Login
+  password: "senha"
+  remember_me: "lembrar de mim"
+  password_confirmation: "confirmar senha"
+  #Form
+  code: "Código"
+  name: "Nome"
+  price: "Preço"
+  quantity: "Quantidade"
+  category: "Categoria"
