@@ -19,13 +19,13 @@
           <th class="table-primary">Preço</th>
           <th class="table-primary">Quantidade</th>
           <th class="table-primary">Categoria</th>
-          <th class="table-primary col-2"></th>
+          <th class="table-primary"></th>
         </tr>
       </thead>
       <tbody>
         <% @products.each do |product| %>
         <tr>
-          <th scope="row"> <%=product.code%> </th>
+          <td> <%=product.code%> </td>
           <td> <%=product.name%> </td>
           <td> <%=product.price%> </td>
           <td> <%=product.quantity%> </td>
@@ -35,7 +35,6 @@
               <%= button_to "Editar", edit_product_path(product), method: :get, class: "btn btn-primary d-inline-block me-2" %>
               <%= button_to "Deletar", product_path(product.id), method: :delete, class: "btn btn-danger d-inline-block" %>
             </div>
-            
           </td>
         </tr>
         <% end %>

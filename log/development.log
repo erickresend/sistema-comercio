@@ -21784,3 +21784,1565 @@ ActionView::Template::Error (undefined local variable or method `unconfirmed_ema
   
 app/views/devise/confirmations/new.html.erb:8
 app/views/devise/confirmations/new.html.erb:3
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddConfirmableToDevise (20240115204109)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (3.2ms)[0m  [1m[35mALTER TABLE "users" ADD "confirmation_token" varchar[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "confirmed_at" datetime(6)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "confirmation_sent_at" datetime(6)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "unconfirmed_email" varchar[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240115204109') RETURNING "version"[0m
+  [1m[36mTRANSACTION (8.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2024-01-15 17:56:09 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 205)
+  Rendered layout layouts/application.html.erb (Duration: 233.4ms | Allocations: 41584)
+Completed 200 OK in 259ms (Views: 243.2ms | ActiveRecord: 0.0ms | Allocations: 45249)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-15 17:56:11 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 4.3ms | Allocations: 828)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 828.9ms | Allocations: 296640)
+  Rendered layout layouts/application.html.erb (Duration: 841.8ms | Allocations: 298937)
+Completed 200 OK in 966ms (Views: 851.9ms | ActiveRecord: 5.4ms | Allocations: 318915)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-15 17:56:13 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "erick.resend@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 767ms (ActiveRecord: 0.7ms | Allocations: 5670)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.7ms | Allocations: 322)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 7.2ms | Allocations: 1308)
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 3383)
+Completed 200 OK in 722ms (Views: 17.8ms | ActiveRecord: 0.0ms | Allocations: 4077)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-15 17:56:26 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "erick.resend@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 743ms (ActiveRecord: 0.4ms | Allocations: 2871)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-15 17:56:27 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.8ms | Allocations: 322)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 9.1ms | Allocations: 1296)
+  Rendered layout layouts/application.html.erb (Duration: 23.5ms | Allocations: 3416)
+Completed 200 OK in 30ms (Views: 26.1ms | ActiveRecord: 0.0ms | Allocations: 4213)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2024-01-15 17:56:30 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 2.6ms | Allocations: 205)
+  Rendered devise/shared/_links.html.erb (Duration: 2.3ms | Allocations: 235)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 18.5ms | Allocations: 2041)
+  Rendered layout layouts/application.html.erb (Duration: 31.7ms | Allocations: 4176)
+Completed 200 OK in 39ms (Views: 35.0ms | ActiveRecord: 0.0ms | Allocations: 5324)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-01-15 17:57:44 -0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erickrails79@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Cadastrar"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "erickrails79@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "confirmation_token", "confirmed_at", "confirmation_sent_at", "unconfirmed_email") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", "erickrails79@gmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-01-15 20:57:44.521396"], ["updated_at", "2024-01-15 20:57:44.521396"], ["confirmation_token", "[FILTERED]"], ["confirmed_at", nil], ["confirmation_sent_at", "2024-01-15 20:57:44.521529"], ["unconfirmed_email", nil]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[36mcommit transaction[0m
+  Rendering devise/mailer/confirmation_instructions.html.erb
+  Rendered devise/mailer/confirmation_instructions.html.erb (Duration: 1.0ms | Allocations: 354)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 16.2ms
+Delivered mail 65a59c48944ea_7f2d42f4969cb@erick-STI-NI-1401.mail (36.2ms)
+Date: Mon, 15 Jan 2024 17:57:44 -0300
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: erickrails79@gmail.com
+Message-ID: <65a59c48944ea_7f2d42f4969cb@erick-STI-NI-1401.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome erickrails79@gmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=3xxiwDG-pYR6QpthzEsm">Confirm my account</a></p>
+
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 423ms (ActiveRecord: 9.0ms | Allocations: 39869)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-15 17:57:44 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 11)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 2495)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 2794)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-15 17:58:06 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.6ms | Allocations: 320)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 6.1ms | Allocations: 1309)
+  Rendered layout layouts/application.html.erb (Duration: 15.7ms | Allocations: 3313)
+Completed 200 OK in 20ms (Views: 17.3ms | ActiveRecord: 0.0ms | Allocations: 3975)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-15 17:58:07 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "erick.resend@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 297ms (ActiveRecord: 0.2ms | Allocations: 1732)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.9ms | Allocations: 320)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1203)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 3170)
+Completed 200 OK in 288ms (Views: 6.5ms | ActiveRecord: 0.0ms | Allocations: 3685)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-15 17:58:24 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erickrails79@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "erickrails79@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 298ms (ActiveRecord: 0.2ms | Allocations: 1816)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-15 17:58:24 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.2ms | Allocations: 320)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1213)
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | Allocations: 3219)
+Completed 200 OK in 10ms (Views: 7.6ms | ActiveRecord: 0.0ms | Allocations: 3858)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-15 17:58:28 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.7ms | Allocations: 320)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 5.6ms | Allocations: 1213)
+  Rendered layout layouts/application.html.erb (Duration: 10.4ms | Allocations: 3217)
+Completed 200 OK in 16ms (Views: 12.1ms | ActiveRecord: 0.0ms | Allocations: 3843)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-15 17:58:32 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erickrails79@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "erickrails79@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 304ms (ActiveRecord: 0.2ms | Allocations: 1769)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-15 17:58:32 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.1ms | Allocations: 320)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1213)
+  Rendered layout layouts/application.html.erb (Duration: 27.8ms | Allocations: 3219)
+Completed 200 OK in 30ms (Views: 28.5ms | ActiveRecord: 0.0ms | Allocations: 3889)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-15 17:59:33 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 124)
+  Rendered layout layouts/application.html.erb (Duration: 31.0ms | Allocations: 19067)
+Completed 200 OK in 39ms (Views: 35.2ms | ActiveRecord: 0.0ms | Allocations: 20167)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-15 17:59:36 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.8ms | Allocations: 653)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 7.9ms | Allocations: 2193)
+  Rendered layout layouts/application.html.erb (Duration: 15.2ms | Allocations: 4428)
+Completed 200 OK in 46ms (Views: 21.1ms | ActiveRecord: 5.3ms | Allocations: 11298)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-15 17:59:38 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "erick.resend@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 295ms (ActiveRecord: 0.3ms | Allocations: 2209)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.1ms | Allocations: 225)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1111)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 3079)
+Completed 200 OK in 287ms (Views: 7.2ms | ActiveRecord: 0.0ms | Allocations: 3641)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-15 18:00:17 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 205)
+  Rendered layout layouts/application.html.erb (Duration: 94.2ms | Allocations: 41457)
+Completed 200 OK in 104ms (Views: 98.9ms | ActiveRecord: 0.0ms | Allocations: 45122)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-15 18:00:18 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.6ms | Allocations: 726)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 263.4ms | Allocations: 296548)
+  Rendered layout layouts/application.html.erb (Duration: 267.7ms | Allocations: 298845)
+Completed 200 OK in 325ms (Views: 271.2ms | ActiveRecord: 4.2ms | Allocations: 318819)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-15 18:00:21 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erickrails79@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "erickrails79@gmail.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 313ms (ActiveRecord: 0.2ms | Allocations: 7456)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-15 18:00:21 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 11)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:32
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 3497)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.2ms | Allocations: 3800)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-15 18:00:27 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 7)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:32
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 2993)
+Completed 200 OK in 18ms (Views: 17.0ms | ActiveRecord: 0.3ms | Allocations: 3250)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-15 18:00:28 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 42.0ms | Allocations: 11131)
+  Rendered layout layouts/application.html.erb (Duration: 45.4ms | Allocations: 13220)
+Completed 200 OK in 61ms (Views: 46.1ms | ActiveRecord: 1.8ms | Allocations: 15991)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-15 18:00:33 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 6.0ms | Allocations: 2247)
+  Rendered layout layouts/application.html.erb (Duration: 9.2ms | Allocations: 4218)
+Completed 200 OK in 17ms (Views: 10.0ms | ActiveRecord: 0.3ms | Allocations: 5981)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2024-01-15 18:00:35 -0300
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 12ms (ActiveRecord: 0.1ms | Allocations: 2681)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-15 18:00:35 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 11)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 2488)
+Completed 200 OK in 7ms (Views: 6.8ms | ActiveRecord: 0.0ms | Allocations: 2783)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-15 18:00:37 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.8ms | Allocations: 225)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1180)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 3184)
+Completed 200 OK in 13ms (Views: 9.1ms | ActiveRecord: 0.0ms | Allocations: 3840)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-15 18:00:39 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "erick.resend@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 300ms (ActiveRecord: 0.3ms | Allocations: 1752)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 225)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1117)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 3084)
+Completed 200 OK in 285ms (Views: 6.4ms | ActiveRecord: 0.0ms | Allocations: 3638)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-15 18:00:47 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "erick.resend@gmail.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 299ms (ActiveRecord: 0.1ms | Allocations: 2447)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-15 18:00:47 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 7)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:32
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 3009)
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.1ms | Allocations: 3260)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-15 18:00:50 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:32
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | Allocations: 2983)
+Completed 200 OK in 11ms (Views: 10.5ms | ActiveRecord: 0.1ms | Allocations: 3234)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-15 18:00:51 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 2254)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 4225)
+Completed 200 OK in 13ms (Views: 10.0ms | ActiveRecord: 0.2ms | Allocations: 5874)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-15 18:00:53 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 11.2ms | Allocations: 2246)
+  Rendered layout layouts/application.html.erb (Duration: 15.3ms | Allocations: 4217)
+Completed 200 OK in 28ms (Views: 17.4ms | ActiveRecord: 0.4ms | Allocations: 5864)
+
+
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE DATABASE "storage/development"."sqlite3" ENCODING = 'utf8'[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE DATABASE "storage/development"."sqlite3" ENCODING = 'unicode'[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE DATABASE "storage/development"."postgresql" ENCODING = 'unicode'[0m
+  [1m[35m (166.7ms)[0m  [1m[35mCREATE DATABASE "storage/development" ENCODING = 'unicode'[0m
+  [1m[35m (67.6ms)[0m  [1m[35mCREATE DATABASE "storage/test" ENCODING = 'unicode'[0m
+Started GET "/" for 127.0.0.1 at 2024-01-16 10:45:14 -0300
+  [1m[35m (19.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate
+
+You have 4 pending migrations:
+
+db/migrate/20240111165417_devise_create_users.rb
+db/migrate/20240111224412_create_clients.rb
+db/migrate/20240111225752_create_products.rb
+db/migrate/20240115204109_add_confirmable_to_devise.rb
+
+
+):
+  
+activerecord (7.1.2) lib/active_record/migration.rb:754:in `check_pending_migrations'
+activerecord (7.1.2) lib/active_record/migration.rb:643:in `block (2 levels) in call'
+activesupport (7.1.2) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (7.1.2) lib/active_record/migration.rb:648:in `block in call'
+activerecord (7.1.2) lib/active_record/migration.rb:640:in `synchronize'
+activerecord (7.1.2) lib/active_record/migration.rb:640:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.2) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.2) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.2) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.2) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.2) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.0.8) lib/rack/method_override.rb:28:in `call'
+rack (3.0.8) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.2) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.2) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.0.8) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.2) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.2) lib/rails/engine.rb:529:in `call'
+puma (6.4.2) lib/puma/configuration.rb:272:in `call'
+puma (6.4.2) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.2) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.2) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.2) lib/puma/server.rb:464:in `process_client'
+puma (6.4.2) lib/puma/server.rb:245:in `block in run'
+puma (6.4.2) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (1.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-01-16 13:45:27.369257', '2024-01-16 13:45:27.369264') RETURNING "key"[0m
+Migrating to DeviseCreateUsers (20240111165417)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp(6), "last_sign_in_at" timestamp(6), "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240111165417') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateClients (20240111224412)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "clients" ("id" bigserial primary key, "name" character varying, "email" character varying, "phone" character varying, "address" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240111224412') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProducts (20240111225752)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "code" integer, "name" character varying, "price" float, "quantity" integer, "category" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240111225752') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddConfirmableToDevise (20240115204109)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.5ms)[0m  [1m[35mALTER TABLE "users" ADD "confirmation_token" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "confirmed_at" timestamp(6)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "confirmation_sent_at" timestamp(6)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[36mUser Update All (0.5ms)[0m  [1m[33mUPDATE "users" SET "confirmed_at" = $1[0m  [["confirmed_at", "2024-01-16 13:45:27.463201"]]
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240115204109') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2024-01-16 10:45:38 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 205)
+  Rendered layout layouts/application.html.erb (Duration: 94.8ms | Allocations: 39927)
+Completed 200 OK in 113ms (Views: 99.0ms | ActiveRecord: 0.0ms | Allocations: 43574)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 10:45:40 -0300
+Processing by ProductsController#index as HTML
+Completed 401 Unauthorized in 11ms (ActiveRecord: 0.0ms | Allocations: 2410)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-16 10:45:40 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 3.0ms | Allocations: 722)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 11.8ms | Allocations: 3481)
+  Rendered layout layouts/application.html.erb (Duration: 18.3ms | Allocations: 5783)
+Completed 200 OK in 127ms (Views: 22.3ms | ActiveRecord: 17.3ms | Allocations: 33419)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-16 10:47:14 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "erick.resend@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 37ms (ActiveRecord: 2.3ms | Allocations: 5127)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.9ms | Allocations: 227)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 9.6ms | Allocations: 1256)
+  Rendered layout layouts/application.html.erb (Duration: 20.2ms | Allocations: 3345)
+Completed 200 OK in 333ms (Views: 21.1ms | ActiveRecord: 0.0ms | Allocations: 4644)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-16 10:47:17 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "erick.resend@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 27ms (ActiveRecord: 0.5ms | Allocations: 1893)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.9ms | Allocations: 225)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1107)
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | Allocations: 3136)
+Completed 200 OK in 302ms (Views: 11.8ms | ActiveRecord: 0.0ms | Allocations: 3662)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2024-01-16 10:47:19 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.8ms | Allocations: 205)
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 140)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 14.0ms | Allocations: 1947)
+  Rendered layout layouts/application.html.erb (Duration: 19.5ms | Allocations: 4082)
+Completed 200 OK in 25ms (Views: 21.9ms | ActiveRecord: 0.0ms | Allocations: 5293)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-01-16 10:47:30 -0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Cadastrar"}
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (7.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "erick.resend@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at", "confirmation_token", "confirmed_at", "confirmation_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["email", "erick.resend@gmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["sign_in_count", 0], ["current_sign_in_at", nil], ["last_sign_in_at", nil], ["current_sign_in_ip", nil], ["last_sign_in_ip", nil], ["created_at", "2024-01-16 13:47:31.135985"], ["updated_at", "2024-01-16 13:47:31.135985"], ["confirmation_token", "[FILTERED]"], ["confirmed_at", nil], ["confirmation_sent_at", nil]]
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://127.0.0.1:3000/products
+Completed 303 See Other in 344ms (ActiveRecord: 13.2ms | Allocations: 8782)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 10:47:31 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 1450)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 3572)
+Completed 200 OK in 22ms (Views: 8.5ms | ActiveRecord: 2.2ms | Allocations: 6427)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 10:47:35 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 748)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 2720)
+Completed 200 OK in 19ms (Views: 10.4ms | ActiveRecord: 1.1ms | Allocations: 4659)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-16 10:47:37 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (3.0ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:19
+  Rendered clients/index.html.erb within layouts/application (Duration: 11.5ms | Allocations: 1279)
+  Rendered layout layouts/application.html.erb (Duration: 17.0ms | Allocations: 3390)
+Completed 200 OK in 27ms (Views: 15.5ms | ActiveRecord: 3.5ms | Allocations: 6232)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 10:47:42 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 752)
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | Allocations: 2724)
+Completed 200 OK in 21ms (Views: 14.4ms | ActiveRecord: 1.1ms | Allocations: 4645)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2024-01-16 10:47:46 -0300
+Processing by ProductsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 21.6ms | Allocations: 6040)
+  Rendered products/new.html.erb within layouts/application (Duration: 33.4ms | Allocations: 6340)
+  Rendered layout layouts/application.html.erb (Duration: 40.0ms | Allocations: 8458)
+Completed 200 OK in 91ms (Views: 41.4ms | ActiveRecord: 3.2ms | Allocations: 18271)
+
+
+Started POST "/products" for 127.0.0.1 at 2024-01-16 10:48:04 -0300
+Processing by ProductsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "product"=>{"code"=>"70120", "name"=>"Conjunto rosa florido", "price"=>"70", "quantity"=>"2", "category"=>"Conjunto"}, "commit"=>"Cadastrar"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:32:in `block in create'
+  [1m[36mProduct Create (4.7ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 70120], ["name", "Conjunto rosa florido"], ["price", 70.0], ["quantity", 2], ["category", "Conjunto"], ["created_at", "2024-01-16 13:48:04.520225"], ["updated_at", "2024-01-16 13:48:04.520225"]]
+  ↳ app/controllers/products_controller.rb:32:in `block in create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:32:in `block in create'
+Redirected to http://127.0.0.1:3000/products/1
+Completed 302 Found in 23ms (ActiveRecord: 7.4ms | Allocations: 4288)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2024-01-16 10:48:04 -0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:68:in `set_product'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 1.9ms | Allocations: 289)
+  Rendered products/show.html.erb within layouts/application (Duration: 6.6ms | Allocations: 1209)
+  Rendered layout layouts/application.html.erb (Duration: 11.0ms | Allocations: 3301)
+Completed 200 OK in 23ms (Views: 11.8ms | ActiveRecord: 1.4ms | Allocations: 6453)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 10:48:06 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 970)
+  Rendered layout layouts/application.html.erb (Duration: 11.3ms | Allocations: 2942)
+Completed 200 OK in 22ms (Views: 13.0ms | ActiveRecord: 1.1ms | Allocations: 4914)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 10:48:25 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 7.5ms | Allocations: 949)
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 2920)
+Completed 200 OK in 27ms (Views: 14.8ms | ActiveRecord: 2.3ms | Allocations: 4678)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-16 10:48:28 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:19
+  Rendered clients/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 714)
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | Allocations: 2686)
+Completed 200 OK in 14ms (Views: 7.9ms | ActiveRecord: 1.0ms | Allocations: 4433)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 10:48:29 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 949)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | Allocations: 2920)
+Completed 200 OK in 13ms (Views: 6.3ms | ActiveRecord: 1.3ms | Allocations: 4675)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-16 10:48:31 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:19
+  Rendered clients/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 714)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 2686)
+Completed 200 OK in 12ms (Views: 6.9ms | ActiveRecord: 0.9ms | Allocations: 4447)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-01-16 10:48:32 -0300
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:11
+  Rendered users/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 903)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:32
+  Rendered layout layouts/application.html.erb (Duration: 16.4ms | Allocations: 4308)
+Completed 200 OK in 21ms (Views: 16.7ms | ActiveRecord: 1.3ms | Allocations: 4970)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 10:48:34 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 5.4ms | Allocations: 972)
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | Allocations: 2943)
+Completed 200 OK in 18ms (Views: 12.9ms | ActiveRecord: 0.8ms | Allocations: 4709)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 10:48:34 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 7)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:32
+  Rendered layout layouts/application.html.erb (Duration: 11.7ms | Allocations: 3094)
+Completed 200 OK in 13ms (Views: 12.6ms | ActiveRecord: 0.3ms | Allocations: 3345)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 10:48:36 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 949)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 2920)
+Completed 200 OK in 14ms (Views: 7.2ms | ActiveRecord: 1.0ms | Allocations: 4669)
+
+
+Started GET "/rails/info/routes" for 127.0.0.1 at 2024-01-16 10:49:11 -0300
+Processing by Rails::InfoController#routes as HTML
+  Rendering layout vendor/bundle/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/layouts/application.html.erb
+  Rendering vendor/bundle/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of vendor/bundle/ruby/3.1.0/gems/actionpack-7.1.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [61 times] (Duration: 26.8ms | Allocations: 10827)
+  Rendered vendor/bundle/ruby/3.1.0/gems/actionpack-7.1.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (Duration: 4.0ms | Allocations: 844)
+  Rendered vendor/bundle/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/rails/info/routes.html.erb within layouts/application (Duration: 44.0ms | Allocations: 18469)
+  Rendered layout vendor/bundle/ruby/3.1.0/gems/railties-7.1.2/lib/rails/templates/layouts/application.html.erb (Duration: 45.2ms | Allocations: 18785)
+Completed 200 OK in 51ms (Views: 49.0ms | ActiveRecord: 0.0ms | Allocations: 19861)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 13:15:40 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 205)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:32
+  Rendered layout layouts/application.html.erb (Duration: 280.7ms | Allocations: 71667)
+Completed 200 OK in 296ms (Views: 267.5ms | ActiveRecord: 18.1ms | Allocations: 75328)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 13:15:42 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 39.0ms | Allocations: 9763)
+  Rendered layout layouts/application.html.erb (Duration: 46.6ms | Allocations: 11882)
+Completed 200 OK in 66ms (Views: 40.1ms | ActiveRecord: 8.7ms | Allocations: 15711)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 13:58:47 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 205)
+  Rendered layout layouts/application.html.erb (Duration: 126.3ms | Allocations: 39805)
+Completed 200 OK in 153ms (Views: 135.8ms | ActiveRecord: 0.0ms | Allocations: 43455)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-16 13:58:48 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 5.2ms | Allocations: 726)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 563.8ms | Allocations: 296492)
+  Rendered layout layouts/application.html.erb (Duration: 571.8ms | Allocations: 298789)
+Completed 200 OK in 739ms (Views: 578.0ms | ActiveRecord: 33.7ms | Allocations: 327331)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-16 13:58:52 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "erick.resend@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 328ms (ActiveRecord: 3.7ms | Allocations: 5790)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 227)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1213)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 3288)
+Completed 200 OK in 305ms (Views: 7.3ms | ActiveRecord: 0.0ms | Allocations: 3985)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-16 13:58:59 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "erick.resend@gmail.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 311ms (ActiveRecord: 1.7ms | Allocations: 3664)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 13:59:00 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 11)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:32
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | Allocations: 3484)
+Completed 200 OK in 14ms (Views: 12.7ms | ActiveRecord: 0.9ms | Allocations: 3787)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 13:59:04 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 66.8ms | Allocations: 9775)
+  Rendered layout layouts/application.html.erb (Duration: 71.4ms | Allocations: 11923)
+Completed 200 OK in 87ms (Views: 63.8ms | ActiveRecord: 10.1ms | Allocations: 14792)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 13:59:05 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:32
+  Rendered layout layouts/application.html.erb (Duration: 14.4ms | Allocations: 3209)
+Completed 200 OK in 16ms (Views: 14.4ms | ActiveRecord: 0.8ms | Allocations: 3464)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2024-01-16 14:00:22 -0300
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 33ms (ActiveRecord: 8.5ms | Allocations: 9713)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 14:00:22 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 123)
+  Rendered layout layouts/application.html.erb (Duration: 23.7ms | Allocations: 19044)
+Completed 200 OK in 27ms (Views: 25.6ms | ActiveRecord: 0.0ms | Allocations: 20149)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 14:00:24 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 2236)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.0ms | Allocations: 2503)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 14:00:26 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 2236)
+Completed 200 OK in 7ms (Views: 6.7ms | ActiveRecord: 0.0ms | Allocations: 2487)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 14:00:43 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 205)
+  Rendered layout layouts/application.html.erb (Duration: 133.4ms | Allocations: 39782)
+Completed 200 OK in 159ms (Views: 140.8ms | ActiveRecord: 0.0ms | Allocations: 43429)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 14:19:12 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 124)
+  Rendered layout layouts/application.html.erb (Duration: 63.7ms | Allocations: 20084)
+Completed 200 OK in 72ms (Views: 68.5ms | ActiveRecord: 0.0ms | Allocations: 21210)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 14:21:24 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 122)
+  Rendered layout layouts/application.html.erb (Duration: 65.2ms | Allocations: 19086)
+Completed 200 OK in 73ms (Views: 69.8ms | ActiveRecord: 0.0ms | Allocations: 20198)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 14:21:53 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 124)
+  Rendered layout layouts/application.html.erb (Duration: 68.6ms | Allocations: 19116)
+Completed 200 OK in 79ms (Views: 74.6ms | ActiveRecord: 0.0ms | Allocations: 20222)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-01-16 14:21:57 -0300
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:11
+  Rendered users/index.html.erb within layouts/application (Duration: 243.5ms | Allocations: 26772)
+  Rendered layout layouts/application.html.erb (Duration: 254.3ms | Allocations: 29358)
+Completed 200 OK in 273ms (Views: 220.9ms | ActiveRecord: 36.1ms | Allocations: 31340)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-16 14:22:01 -0300
+Processing by ClientsController#index as HTML
+Completed 401 Unauthorized in 8ms (ActiveRecord: 0.0ms | Allocations: 1427)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-16 14:22:02 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 5.2ms | Allocations: 722)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 29.0ms | Allocations: 3473)
+  Rendered layout layouts/application.html.erb (Duration: 41.0ms | Allocations: 5775)
+Completed 200 OK in 54ms (Views: 47.5ms | ActiveRecord: 0.0ms | Allocations: 7625)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-16 14:22:08 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "erick.resend@gmail.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/clients
+Completed 303 See Other in 752ms (ActiveRecord: 1.4ms | Allocations: 6158)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-16 14:22:09 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (4.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:19
+  Rendered clients/index.html.erb within layouts/application (Duration: 14.5ms | Allocations: 1299)
+  Rendered layout layouts/application.html.erb (Duration: 27.5ms | Allocations: 3427)
+Completed 200 OK in 52ms (Views: 25.4ms | ActiveRecord: 5.0ms | Allocations: 6187)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-16 14:22:12 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.8ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:19
+  Rendered clients/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 714)
+  Rendered layout layouts/application.html.erb (Duration: 14.0ms | Allocations: 2686)
+Completed 200 OK in 28ms (Views: 15.2ms | ActiveRecord: 1.8ms | Allocations: 4518)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 14:22:14 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 62.3ms | Allocations: 9759)
+  Rendered layout layouts/application.html.erb (Duration: 70.2ms | Allocations: 11848)
+Completed 200 OK in 89ms (Views: 63.7ms | ActiveRecord: 9.3ms | Allocations: 14696)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 14:22:41 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 7.6ms | Allocations: 950)
+  Rendered layout layouts/application.html.erb (Duration: 17.7ms | Allocations: 2921)
+Completed 200 OK in 30ms (Views: 18.5ms | ActiveRecord: 1.5ms | Allocations: 4784)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2024-01-16 14:22:44 -0300
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 58ms (ActiveRecord: 0.6ms | Allocations: 5763)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 14:22:44 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 11)
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | Allocations: 2566)
+Completed 200 OK in 13ms (Views: 12.4ms | ActiveRecord: 0.0ms | Allocations: 2862)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-16 14:22:45 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.9ms | Allocations: 225)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 6.5ms | Allocations: 1180)
+  Rendered layout layouts/application.html.erb (Duration: 16.9ms | Allocations: 3188)
+Completed 200 OK in 24ms (Views: 19.1ms | ActiveRecord: 0.0ms | Allocations: 3853)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2024-01-16 14:22:47 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.2ms | Allocations: 205)
+  Rendered devise/shared/_links.html.erb (Duration: 1.5ms | Allocations: 140)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 13.6ms | Allocations: 1946)
+  Rendered layout layouts/application.html.erb (Duration: 25.8ms | Allocations: 4081)
+Completed 200 OK in 33ms (Views: 30.1ms | ActiveRecord: 0.0ms | Allocations: 5213)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-16 14:22:50 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.2ms | Allocations: 225)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 9.1ms | Allocations: 1122)
+  Rendered layout layouts/application.html.erb (Duration: 19.3ms | Allocations: 3126)
+Completed 200 OK in 25ms (Views: 21.6ms | ActiveRecord: 0.0ms | Allocations: 3777)
+
+
+Started GET "/users/password/new" for 127.0.0.1 at 2024-01-16 14:22:53 -0300
+Processing by Devise::PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/passwords/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 16)
+  Rendered devise/shared/_links.html.erb (Duration: 1.5ms | Allocations: 231)
+  Rendered devise/passwords/new.html.erb within layouts/application (Duration: 7.6ms | Allocations: 1188)
+  Rendered layout layouts/application.html.erb (Duration: 19.9ms | Allocations: 3323)
+Completed 200 OK in 29ms (Views: 24.8ms | ActiveRecord: 0.0ms | Allocations: 4403)
+
+
+Started GET "/" for 127.0.0.1 at 2024-01-16 14:22:55 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 11.5ms | Allocations: 2242)
+Completed 200 OK in 14ms (Views: 13.2ms | ActiveRecord: 0.0ms | Allocations: 2493)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-16 14:22:59 -0300
+Processing by ClientsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 295)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-16 14:22:59 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.0ms | Allocations: 225)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 8.1ms | Allocations: 1131)
+  Rendered layout layouts/application.html.erb (Duration: 21.2ms | Allocations: 3139)
+Completed 200 OK in 25ms (Views: 22.7ms | ActiveRecord: 0.0ms | Allocations: 3821)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 14:23:00 -0300
+Processing by ProductsController#index as HTML
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms | Allocations: 298)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-16 14:23:00 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.7ms | Allocations: 225)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 7.4ms | Allocations: 1118)
+  Rendered layout layouts/application.html.erb (Duration: 19.4ms | Allocations: 3124)
+Completed 200 OK in 26ms (Views: 21.2ms | ActiveRecord: 0.0ms | Allocations: 3783)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-01-16 14:23:04 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.8ms | Allocations: 225)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 8.6ms | Allocations: 1118)
+  Rendered layout layouts/application.html.erb (Duration: 19.3ms | Allocations: 3122)
+Completed 200 OK in 24ms (Views: 21.5ms | ActiveRecord: 0.0ms | Allocations: 3765)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-01-16 14:23:06 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"erick.resend@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "erick.resend@gmail.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/products
+Completed 303 See Other in 727ms (ActiveRecord: 1.0ms | Allocations: 2671)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 14:23:07 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 8.2ms | Allocations: 968)
+  Rendered layout layouts/application.html.erb (Duration: 22.7ms | Allocations: 2941)
+Completed 200 OK in 40ms (Views: 23.9ms | ActiveRecord: 2.0ms | Allocations: 4657)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 14:23:09 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 949)
+  Rendered layout layouts/application.html.erb (Duration: 15.4ms | Allocations: 2920)
+Completed 200 OK in 28ms (Views: 16.2ms | ActiveRecord: 1.4ms | Allocations: 4601)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 14:23:13 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 7.7ms | Allocations: 949)
+  Rendered layout layouts/application.html.erb (Duration: 15.6ms | Allocations: 2920)
+Completed 200 OK in 28ms (Views: 16.1ms | ActiveRecord: 1.7ms | Allocations: 4630)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-16 14:23:14 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (0.8ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:19
+  Rendered clients/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 715)
+  Rendered layout layouts/application.html.erb (Duration: 13.9ms | Allocations: 2687)
+Completed 200 OK in 29ms (Views: 14.6ms | ActiveRecord: 1.3ms | Allocations: 4392)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 14:23:15 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 5.9ms | Allocations: 949)
+  Rendered layout layouts/application.html.erb (Duration: 14.7ms | Allocations: 2920)
+Completed 200 OK in 29ms (Views: 15.2ms | ActiveRecord: 1.6ms | Allocations: 4630)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-01-16 14:23:16 -0300
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:11
+  Rendered users/index.html.erb within layouts/application (Duration: 7.7ms | Allocations: 636)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:30
+  Rendered layout layouts/application.html.erb (Duration: 29.9ms | Allocations: 3678)
+Completed 200 OK in 33ms (Views: 29.9ms | ActiveRecord: 2.1ms | Allocations: 3948)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 14:23:17 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 6.8ms | Allocations: 949)
+  Rendered layout layouts/application.html.erb (Duration: 18.1ms | Allocations: 2920)
+Completed 200 OK in 35ms (Views: 20.2ms | ActiveRecord: 2.0ms | Allocations: 4618)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 14:24:14 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 30.1ms | Allocations: 5038)
+  Rendered layout layouts/application.html.erb (Duration: 86.5ms | Allocations: 23476)
+Completed 200 OK in 151ms (Views: 86.0ms | ActiveRecord: 16.3ms | Allocations: 34123)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 14:24:52 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 37.6ms | Allocations: 5061)
+  Rendered layout layouts/application.html.erb (Duration: 96.9ms | Allocations: 23559)
+Completed 200 OK in 189ms (Views: 93.6ms | ActiveRecord: 18.2ms | Allocations: 34190)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-01-16 14:25:57 -0300
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:11
+  Rendered users/index.html.erb within layouts/application (Duration: 42.8ms | Allocations: 7080)
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:30
+  Rendered layout layouts/application.html.erb (Duration: 104.6ms | Allocations: 26899)
+Completed 200 OK in 112ms (Views: 98.6ms | ActiveRecord: 9.8ms | Allocations: 28262)
+
+
+Started GET "/clients" for 127.0.0.1 at 2024-01-16 14:25:58 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[36mClient Load (1.0ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  ↳ app/views/clients/index.html.erb:19
+  Rendered clients/index.html.erb within layouts/application (Duration: 6.8ms | Allocations: 1245)
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | Allocations: 3356)
+Completed 200 OK in 36ms (Views: 17.6ms | ActiveRecord: 1.5ms | Allocations: 6973)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 14:26:00 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 40.8ms | Allocations: 5007)
+  Rendered layout layouts/application.html.erb (Duration: 49.5ms | Allocations: 7096)
+Completed 200 OK in 67ms (Views: 41.4ms | ActiveRecord: 11.1ms | Allocations: 9906)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 14:26:34 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 42.5ms | Allocations: 5038)
+  Rendered layout layouts/application.html.erb (Duration: 126.3ms | Allocations: 23476)
+Completed 200 OK in 213ms (Views: 128.1ms | ActiveRecord: 16.5ms | Allocations: 34103)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 14:27:25 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 14.5ms | Allocations: 5042)
+  Rendered layout layouts/application.html.erb (Duration: 38.7ms | Allocations: 23512)
+Completed 200 OK in 71ms (Views: 36.9ms | ActiveRecord: 8.7ms | Allocations: 34193)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 14:27:33 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 13.0ms | Allocations: 5037)
+  Rendered layout layouts/application.html.erb (Duration: 36.1ms | Allocations: 23361)
+Completed 200 OK in 64ms (Views: 35.1ms | ActiveRecord: 6.7ms | Allocations: 34004)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 14:28:52 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 14.0ms | Allocations: 4768)
+  Rendered layout layouts/application.html.erb (Duration: 34.5ms | Allocations: 23118)
+Completed 200 OK in 60ms (Views: 31.7ms | ActiveRecord: 8.2ms | Allocations: 33746)
+
+
+Started GET "/products" for 127.0.0.1 at 2024-01-16 14:29:47 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 12.3ms | Allocations: 5041)
+  Rendered layout layouts/application.html.erb (Duration: 36.2ms | Allocations: 23539)
+Completed 200 OK in 67ms (Views: 35.5ms | ActiveRecord: 7.0ms | Allocations: 34232)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (4.4ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Khalilah Schamberger DVM"], ["email", "effie@little.example"], ["phone", "(575) 950-1880 x255"], ["address", "2993 Schultz Wells, South Manuel, NM 09708-3698"], ["created_at", "2024-01-16 17:30:16.408550"], ["updated_at", "2024-01-16 17:30:16.408550"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (1.8ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Ginny King V"], ["email", "misha.cummings@wiegand.example"], ["phone", "(871) 048-5899 x292"], ["address", "786 Tremblay Place, Port Aleen, IN 44860"], ["created_at", "2024-01-16 17:30:16.422569"], ["updated_at", "2024-01-16 17:30:16.422569"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (1.8ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tamatha Cassin"], ["email", "adena@nader.example"], ["phone", "1-537-950-5853 x491"], ["address", "Suite 289 2281 Gibson Ramp, Port Joan, FL 32439"], ["created_at", "2024-01-16 17:30:16.430125"], ["updated_at", "2024-01-16 17:30:16.430125"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (1.9ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Houston Cassin IV"], ["email", "emmett.orn@beer-rohan.example"], ["phone", "373.177.2242 x61038"], ["address", "Suite 607 23935 Volkman Rapids, Eleonoreport, NJ 35456-2289"], ["created_at", "2024-01-16 17:30:16.438113"], ["updated_at", "2024-01-16 17:30:16.438113"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.3ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Graham Ferry I"], ["email", "cameron@welch-fadel.example"], ["phone", "505.586.8267 x00279"], ["address", "Suite 771 21633 Abraham Stravenue, New Erasmo, HI 44215"], ["created_at", "2024-01-16 17:30:16.446460"], ["updated_at", "2024-01-16 17:30:16.446460"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.3ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Loree Schuster"], ["email", "trinidad_robel@stracke-adams.example"], ["phone", "692-827-6707 x7560"], ["address", "Suite 481 71035 Padberg Village, Ryanmouth, VT 23929-5342"], ["created_at", "2024-01-16 17:30:16.454694"], ["updated_at", "2024-01-16 17:30:16.454694"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.3ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Theodore Senger"], ["email", "bart_erdman@bergnaum.example"], ["phone", "(622) 533-8048 x864"], ["address", "Apt. 534 705 Purdy Station, Lake Justinstad, NJ 03090-3208"], ["created_at", "2024-01-16 17:30:16.463503"], ["updated_at", "2024-01-16 17:30:16.463503"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.3ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Zachary McCullough JD"], ["email", "dewitt.pfannerstill@moore.example"], ["phone", "616.474.2683 x4688"], ["address", "33965 O'Keefe Ridges, Stephniefort, AR 72069"], ["created_at", "2024-01-16 17:30:16.471962"], ["updated_at", "2024-01-16 17:30:16.471962"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.3ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Huey Graham"], ["email", "tony_ferry@hammes.test"], ["phone", "(205) 628-1369 x453"], ["address", "4699 Johnson Rest, South Lashonport, IL 26044"], ["created_at", "2024-01-16 17:30:16.480549"], ["updated_at", "2024-01-16 17:30:16.480549"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.3ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Drusilla Carter"], ["email", "krystyna@stanton.test"], ["phone", "236.216.2191 x873"], ["address", "226 Lowell Hills, South Takishamouth, IA 14155"], ["created_at", "2024-01-16 17:30:16.489281"], ["updated_at", "2024-01-16 17:30:16.489281"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.3ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 69401], ["name", "Sen. Reynaldo Hayes"], ["price", 96.0], ["quantity", 4], ["category", "䍧\u{126C4}\u{D5850}\uD7FE6##"], ["created_at", "2024-01-16 17:30:16.517809"], ["updated_at", "2024-01-16 17:30:16.517809"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.4ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 51432], ["name", "Ismael Kunde"], ["price", 78.0], ["quantity", 1], ["category", "X\uAB2F 9䊌#폻"], ["created_at", "2024-01-16 17:30:16.524599"], ["updated_at", "2024-01-16 17:30:16.524599"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.2ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 68382], ["name", "Cary Vandervort"], ["price", 39.0], ["quantity", 4], ["category", "<󳗝\u0017\u{806C5}*Q"], ["created_at", "2024-01-16 17:30:16.531401"], ["updated_at", "2024-01-16 17:30:16.531401"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.1ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 69269], ["name", "Jesus Osinski"], ["price", 18.0], ["quantity", 4], ["category", ")\u{747AA}u\u0019R"], ["created_at", "2024-01-16 17:30:16.538019"], ["updated_at", "2024-01-16 17:30:16.538019"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.3ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 54840], ["name", "Conrad Braun"], ["price", 81.0], ["quantity", 2], ["category", "\u{A165E}\u{1C847}\u{5C613}-𗵠Z冷"], ["created_at", "2024-01-16 17:30:16.544649"], ["updated_at", "2024-01-16 17:30:16.544649"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.2ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 65548], ["name", "The Hon. Edgar Beer"], ["price", 70.0], ["quantity", 5], ["category", " 󻢌 WS"], ["created_at", "2024-01-16 17:30:16.551452"], ["updated_at", "2024-01-16 17:30:16.551452"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.3ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 20651], ["name", "Allegra Little"], ["price", 79.0], ["quantity", 1], ["category", " 튂K\u0013 "], ["created_at", "2024-01-16 17:30:16.558039"], ["updated_at", "2024-01-16 17:30:16.558039"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.3ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 87563], ["name", "Gov. Lonny Jenkins"], ["price", 53.0], ["quantity", 2], ["category", " \u0013\u001C屠⼘\v"], ["created_at", "2024-01-16 17:30:16.564959"], ["updated_at", "2024-01-16 17:30:16.564959"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.3ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 46241], ["name", "Derek Ortiz"], ["price", 78.0], ["quantity", 3], ["category", "6==Z:"], ["created_at", "2024-01-16 17:30:16.571732"], ["updated_at", "2024-01-16 17:30:16.571732"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.3ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 69480], ["name", "Pres. Esmeralda Weber"], ["price", 17.0], ["quantity", 3], ["category", ":ᮄjꘆD䳂\u{9AE0E}"], ["created_at", "2024-01-16 17:30:16.578599"], ["updated_at", "2024-01-16 17:30:16.578599"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.0ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Pres. Cassidy Schmidt"], ["email", "louann_emmerich@gusikowski.example"], ["phone", "(972) 436-4326"], ["address", "Apt. 250 520 Gusikowski Path, South Jasperfurt, VT 29747-0703"], ["created_at", "2024-01-16 17:30:20.854050"], ["updated_at", "2024-01-16 17:30:20.854050"]]
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.2ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Harrison Leuschke"], ["email", "omer@prohaska.example"], ["phone", "(426) 071-6579 x123"], ["address", "Apt. 157 861 Hilpert Spring, Shonton, OH 37647"], ["created_at", "2024-01-16 17:30:20.870056"], ["updated_at", "2024-01-16 17:30:20.870056"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.2ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Regenia Swift"], ["email", "temeka@dare-crist.test"], ["phone", "1-318-709-6300 x2183"], ["address", "9223 Kami Summit, Jettaport, CO 87586-9647"], ["created_at", "2024-01-16 17:30:20.878343"], ["updated_at", "2024-01-16 17:30:20.878343"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.4ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Ana Welch"], ["email", "wilfredo_welch@white-turcotte.example"], ["phone", "1-543-565-2590 x31763"], ["address", "Suite 882 43851 Prosacco Prairie, Port Alecia, NC 28738"], ["created_at", "2024-01-16 17:30:20.886617"], ["updated_at", "2024-01-16 17:30:20.886617"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (3.2ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Danyelle Boyle"], ["email", "shelby_reichel@greenholt.test"], ["phone", "1-101-592-0492"], ["address", "Apt. 297 5517 Darrell Mountain, East Irwin, KS 40636"], ["created_at", "2024-01-16 17:30:20.895468"], ["updated_at", "2024-01-16 17:30:20.895468"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.3ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Sheldon Feest"], ["email", "miguelina.wisozk@barton.example"], ["phone", "(322) 909-5298 x920"], ["address", "3762 Emmerich Mountains, North Wendell, OR 23163-7526"], ["created_at", "2024-01-16 17:30:20.904884"], ["updated_at", "2024-01-16 17:30:20.904884"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.3ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Nova Romaguera"], ["email", "vergie@hickle-mckenzie.test"], ["phone", "528.372.6956 x545"], ["address", "Suite 363 815 Colton Drives, Adellaton, LA 83218"], ["created_at", "2024-01-16 17:30:20.913675"], ["updated_at", "2024-01-16 17:30:20.913675"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.3ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Chad Swift"], ["email", "enoch@mcglynn.test"], ["phone", "1-798-544-9002"], ["address", "4291 Wehner Stravenue, Glindatown, AK 54051"], ["created_at", "2024-01-16 17:30:20.922086"], ["updated_at", "2024-01-16 17:30:20.922086"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.3ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Ms. Lawana Halvorson"], ["email", "johnna.lueilwitz@rowe.example"], ["phone", "1-664-289-6085 x320"], ["address", "Apt. 816 76190 Bednar Road, Lake Earlean, LA 67529-8060"], ["created_at", "2024-01-16 17:30:20.930693"], ["updated_at", "2024-01-16 17:30:20.930693"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.3ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tamar Gutkowski"], ["email", "lara_connelly@gorczany.example"], ["phone", "589-142-3179"], ["address", "Suite 676 756 Murazik Station, Keeblerhaven, IN 34827-8230"], ["created_at", "2024-01-16 17:30:20.938794"], ["updated_at", "2024-01-16 17:30:20.938794"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.0ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 15786], ["name", "Harriett Kshlerin"], ["price", 20.0], ["quantity", 1], ["category", "s\u001F7뙵 "], ["created_at", "2024-01-16 17:30:20.967080"], ["updated_at", "2024-01-16 17:30:20.967080"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.3ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 38077], ["name", "Haywood Marks"], ["price", 89.0], ["quantity", 1], ["category", "\u{B1999} ⌬\u{9EEAA}D3N"], ["created_at", "2024-01-16 17:30:20.973549"], ["updated_at", "2024-01-16 17:30:20.973549"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.2ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 84419], ["name", "Farrah Grady"], ["price", 49.0], ["quantity", 5], ["category", "*\u{96674}  \u0006Pf "], ["created_at", "2024-01-16 17:30:20.980188"], ["updated_at", "2024-01-16 17:30:20.980188"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.2ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 22559], ["name", "Louie Cruickshank"], ["price", 28.0], ["quantity", 5], ["category", "쬷 d𠹳C󸂹4悳"], ["created_at", "2024-01-16 17:30:20.986616"], ["updated_at", "2024-01-16 17:30:20.986616"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.3ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 10344], ["name", "Demetrice Abshire"], ["price", 58.0], ["quantity", 3], ["category", "\u{3CDA5};   /"], ["created_at", "2024-01-16 17:30:20.993221"], ["updated_at", "2024-01-16 17:30:20.993221"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.3ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 66663], ["name", "Alva King"], ["price", 98.0], ["quantity", 1], ["category", "璌TTK蒞实 "], ["created_at", "2024-01-16 17:30:21.000152"], ["updated_at", "2024-01-16 17:30:21.000152"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.2ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 72469], ["name", "Rigoberto Mayer"], ["price", 57.0], ["quantity", 4], ["category", "\u{9FE96}\u{3CDFD}\u{B5AEA}󱺲 8"], ["created_at", "2024-01-16 17:30:21.006849"], ["updated_at", "2024-01-16 17:30:21.006849"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.3ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 70129], ["name", "Lou Olson Ret."], ["price", 46.0], ["quantity", 4], ["category", "ef𑈁& 茵"], ["created_at", "2024-01-16 17:30:21.013507"], ["updated_at", "2024-01-16 17:30:21.013507"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.3ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 46682], ["name", "Adriene Dooley"], ["price", 56.0], ["quantity", 3], ["category", "'⚸:翉촦CA"], ["created_at", "2024-01-16 17:30:21.020153"], ["updated_at", "2024-01-16 17:30:21.020153"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.3ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 53535], ["name", "Bernita Wisoky"], ["price", 40.0], ["quantity", 1], ["category", "$W 𘰂\u{46065}\u001A"], ["created_at", "2024-01-16 17:30:21.026756"], ["updated_at", "2024-01-16 17:30:21.026756"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.2ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Burt Schimmel"], ["email", "evangelina.krajcik@dubuque-schumm.test"], ["phone", "812.347.1547 x2911"], ["address", "Apt. 722 149 Vandervort Islands, Lake Larhonda, DE 57397-5157"], ["created_at", "2024-01-16 17:30:23.829459"], ["updated_at", "2024-01-16 17:30:23.829459"]]
+  [1m[36mTRANSACTION (7.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.2ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Roland Torp"], ["email", "margurite@bergstrom-koss.test"], ["phone", "445-267-7532 x8999"], ["address", "8904 Daryl Shore, South Dalestad, WY 31539"], ["created_at", "2024-01-16 17:30:23.846029"], ["updated_at", "2024-01-16 17:30:23.846029"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.5ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Melvin Wilderman"], ["email", "clinton@runolfsson-stroman.test"], ["phone", "967.065.2313"], ["address", "Suite 857 402 Weimann Mountains, Lake Leighbury, NY 41998"], ["created_at", "2024-01-16 17:30:23.854683"], ["updated_at", "2024-01-16 17:30:23.854683"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.6ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Lucile Rath"], ["email", "irwin@conn.test"], ["phone", "1-275-960-1913 x53637"], ["address", "Apt. 289 6724 Willette Lakes, Marquardtburgh, HI 95031"], ["created_at", "2024-01-16 17:30:23.863198"], ["updated_at", "2024-01-16 17:30:23.863198"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.5ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "The Hon. Kristle Bergstrom"], ["email", "dayna@waters.test"], ["phone", "(285) 595-9384 x9931"], ["address", "Suite 793 939 Feeney Parkway, Johnieberg, WI 96297-6004"], ["created_at", "2024-01-16 17:30:23.871614"], ["updated_at", "2024-01-16 17:30:23.871614"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.2ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Dr. Young Jones"], ["email", "ray.hane@lubowitz.example"], ["phone", "(662) 088-3053"], ["address", "Apt. 676 382 McClure Dale, Rosenbaumshire, RI 61446-2507"], ["created_at", "2024-01-16 17:30:23.879549"], ["updated_at", "2024-01-16 17:30:23.879549"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.5ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Shameka Ziemann"], ["email", "francis_collier@hettinger.test"], ["phone", "1-787-094-3474 x877"], ["address", "Apt. 301 4220 Dicki Port, Port Jerome, AK 44557"], ["created_at", "2024-01-16 17:30:23.887715"], ["updated_at", "2024-01-16 17:30:23.887715"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.3ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Dannie Gusikowski"], ["email", "ezequiel.beahan@wilderman-upton.test"], ["phone", "578.932.3023 x447"], ["address", "29074 Veum Hollow, Deborahburgh, NH 57299-5937"], ["created_at", "2024-01-16 17:30:23.895866"], ["updated_at", "2024-01-16 17:30:23.895866"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.2ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Bradly Wiegand DVM"], ["email", "jillian.bauch@hahn-harber.example"], ["phone", "254-862-5069 x7364"], ["address", "19201 Jay Glen, New Annaleeton, MO 05992"], ["created_at", "2024-01-16 17:30:23.904583"], ["updated_at", "2024-01-16 17:30:23.904583"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Create (2.3ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Jacquetta Renner"], ["email", "jefferson@effertz.test"], ["phone", "1-877-802-4875 x816"], ["address", "323 Latricia Isle, Kingfort, ME 79290"], ["created_at", "2024-01-16 17:30:23.913082"], ["updated_at", "2024-01-16 17:30:23.913082"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (1.9ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 64457], ["name", "Renaldo Luettgen"], ["price", 39.0], ["quantity", 5], ["category", "􋙢9십If,\u0017"], ["created_at", "2024-01-16 17:30:23.941760"], ["updated_at", "2024-01-16 17:30:23.941760"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.1ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 80050], ["name", "Rolando Schmidt"], ["price", 49.0], ["quantity", 3], ["category", "\u000F<W ꝳ K "], ["created_at", "2024-01-16 17:30:23.948365"], ["updated_at", "2024-01-16 17:30:23.948365"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.2ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 90815], ["name", "Rep. Armand Halvorson"], ["price", 64.0], ["quantity", 5], ["category", "陞󽀀𡺹斯\u00181􉽌"], ["created_at", "2024-01-16 17:30:23.954742"], ["updated_at", "2024-01-16 17:30:23.954742"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.3ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 42950], ["name", "Arthur Bins"], ["price", 13.0], ["quantity", 1], ["category", "~\u{3DCED}UA'"], ["created_at", "2024-01-16 17:30:23.961266"], ["updated_at", "2024-01-16 17:30:23.961266"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.2ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 56102], ["name", "The Hon. Kali Fahey"], ["price", 42.0], ["quantity", 3], ["category", "\u{92BA8}𝔬j㡓\u0015(\u{8F4CE}"], ["created_at", "2024-01-16 17:30:23.968136"], ["updated_at", "2024-01-16 17:30:23.968136"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.4ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 25885], ["name", "Marcelo Mohr"], ["price", 26.0], ["quantity", 1], ["category", "\u{803B4}宙\u{7CAB9}6\u{1DBA7}\u0002\u{B7C11}"], ["created_at", "2024-01-16 17:30:23.975368"], ["updated_at", "2024-01-16 17:30:23.975368"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.3ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 99117], ["name", "Rubin Legros IV"], ["price", 78.0], ["quantity", 3], ["category", "  -塒 \u{62221} "], ["created_at", "2024-01-16 17:30:23.982409"], ["updated_at", "2024-01-16 17:30:23.982409"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.3ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 17712], ["name", "Veronica Schultz"], ["price", 89.0], ["quantity", 4], ["category", "\u{EC630}ᜡ>论\u{9524C}"], ["created_at", "2024-01-16 17:30:23.989064"], ["updated_at", "2024-01-16 17:30:23.989064"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.2ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 14812], ["name", "Chau Blick"], ["price", 89.0], ["quantity", 3], ["category", " C\u{EE6BC}0㹷7蜑"], ["created_at", "2024-01-16 17:30:23.995983"], ["updated_at", "2024-01-16 17:30:23.995983"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (2.4ms)[0m  [1m[32mINSERT INTO "products" ("code", "name", "price", "quantity", "category", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["code", 67832], ["name", "Hilton O'Hara"], ["price", 57.0], ["quantity", 2], ["category", "跉r閷愠\u{EABCF};"], ["created_at", "2024-01-16 17:30:24.002496"], ["updated_at", "2024-01-16 17:30:24.002496"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/products" for 127.0.0.1 at 2024-01-16 14:30:33 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (2.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:26
+  Rendered products/index.html.erb within layouts/application (Duration: 56.6ms | Allocations: 15665)
+  Rendered layout layouts/application.html.erb (Duration: 194.2ms | Allocations: 54693)
+Completed 200 OK in 335ms (Views: 194.7ms | ActiveRecord: 20.4ms | Allocations: 91407)
+
+
