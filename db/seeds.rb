@@ -16,7 +16,7 @@
   Client.create(name: client_name, email: client_email, phone: client_phone, address: client_address)
 end
 
-10.times do |i|
+50.times do |i|
   product_code = Faker::Number.number(digits: 5)
   product_name = Faker::Name.name
   product_price = Faker::Number.number(digits: 2)

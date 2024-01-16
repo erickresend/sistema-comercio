@@ -3,10 +3,10 @@
 <div class="container mb-4" id="clients">
 
   <div>
-  <%= form_tag(products_path, method: :get) do %>
+    <%= form_tag(products_path, method: :get) do %>
       <%= text_field_tag 'search', nil, placeholder: 'Digite o nome do produtio', class: "form-control w-25" %>
       <%= submit_tag "Pesquisar", class: "btn btn-primary mt-2" %>
-  <% end %>
+    <% end %>
   </div>
 
   <div class="mt-3 mb-3 p-3 card shadow">
@@ -40,6 +40,9 @@
         <% end %>
       </tbody>
     </table>
-    <%= button_to "Novo produto", new_product_path, method: :get, class: "btn btn-primary"%>
+    <%= button_to "Novo produto", new_product_path, method: :get, class: "btn btn-primary mb-3"%>
+    <% if !params[:search] %>
+      <%= paginate @products %>
+    <% end %>
   </div>
 </div>
