@@ -78,3 +78,5 @@ gem "devise-i18n", "~> 1.12"
 gem "dockerfile-rails", ">= 1.6", :group => :development
 
 gem "kaminari"
+
+gem 'rails-i18n'
