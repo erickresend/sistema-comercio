@@ -7,7 +7,8 @@ class ClientsController < ApplicationController
     if params[:search]
       @clients = Client.search(params[:search])
     else
-      @clients = Client.all
+      #@clients = Client.all
+      @clients = Client.page(params[:page]).per(10)
     end
   end
 

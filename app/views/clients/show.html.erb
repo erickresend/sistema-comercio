@@ -1,10 +1,15 @@
-<p style="color: green"><%= notice %></p>
+<div class="container d-flex justify-content-center">
+  <div class="mt-3 mb-3 p-3 card shadow" style="min-width: 300px;">
 
-<%= render @client %>
+    <p style="color: green"><%= notice %></p>
+  
+    <%= render @client %>
 
-<div>
-  <%= link_to "Edit this client", edit_client_path(@client) %> |
-  <%= link_to "Back to clients", clients_path %>
-
-  <%= button_to "Destroy this client", @client, method: :delete %>
+    <div class="d-flex justify-content-between">
+      <%= button_to "Editar", edit_client_path(@client), method: :get, class: "btn btn-sm btn-secondary my-1" %>
+      <%= button_to "Deletar", @client, method: :delete, class: "btn btn-sm btn-danger my-1" %>
+      <%= button_to "Produtos", clients_path, method: :get, class: "btn btn-sm btn-secondary my-1" %>
+    </div>
+  </div>
 </div>
+
