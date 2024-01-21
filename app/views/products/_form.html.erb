@@ -35,9 +35,9 @@
 
       <div class="py-1">
         <%= form.label t(:category), class: "form-label" %>
-        <%= form.text_field :category, class: "form-control" %>
+        <%= form.select :category_id, Category.pluck(:name, :id), {include_blank: true}, class: "form-control" %>
       </div>
-
+      
       <div class="py-2">
         <% if product.id %>
           <%= form.submit "Editar", class: "btn btn-primary" %>
