@@ -1,0 +1,1867 @@
+  [1m[35m (46.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "storage/test"[0m
+  [1m[35m (184.4ms)[0m  [1m[35mCREATE DATABASE "storage/test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories" CASCADE[0m
+  [1m[35m (37.4ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "clients" CASCADE[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "clients" ("id" bigserial primary key, "name" character varying, "email" character varying, "phone" character varying, "address" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "products" CASCADE[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "code" integer, "name" character varying, "price" float, "quantity" integer, "category_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE INDEX "index_products_on_category_id" ON "products" ("category_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp(6), "last_sign_in_at" timestamp(6), "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "confirmation_token" character varying, "confirmed_at" timestamp(6), "confirmation_sent_at" timestamp(6))[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20240121141613)[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20240115204109),
+(20240111225752),
+(20240111224412),
+(20240111165417);[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (1.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'test', '2024-01-21 18:37:11.412665', '2024-01-21 18:37:11.412679') RETURNING "key"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '1f4b2a257f2fa435c75a6c71c2b00432bf24d329', '2024-01-21 18:37:11.418982', '2024-01-21 18:37:11.418988') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (30.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (1.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."code" = $1 LIMIT $2[0m  [["code", 10025], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."code" = $1 LIMIT $2[0m  [["code", 10025], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (5.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Blusa"], ["created_at", "2024-01-21 18:47:41.433274"], ["updated_at", "2024-01-21 18:47:41.433274"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Blusa"], ["created_at", "2024-01-21 18:48:47.597101"], ["updated_at", "2024-01-21 18:48:47.597101"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (4.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (7.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (2.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (8.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 16:08:30.526645"], ["updated_at", "2024-01-22 16:08:30.526645"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 16:13:04.997306"], ["updated_at", "2024-01-22 16:13:04.997306"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 16:14:05.468067"], ["updated_at", "2024-01-22 16:14:05.468067"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.1ms)[0m  [1m[35mALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (8.7ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (7.4ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (33.8ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (2.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:06:21.084966"], ["updated_at", "2024-01-22 17:06:21.084966"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.5ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.0ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (27.6ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:08:39.384568"], ["updated_at", "2024-01-22 17:08:39.384568"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:08:39.410569"], ["updated_at", "2024-01-22 17:08:39.410569"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (3.2ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (2.5ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (19.9ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:09:23.733461"], ["updated_at", "2024-01-22 17:09:23.733461"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:09:23.759289"], ["updated_at", "2024-01-22 17:09:23.759289"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:09:23.763112"], ["updated_at", "2024-01-22 17:09:23.763112"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.3ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (27.7ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:09:46.818462"], ["updated_at", "2024-01-22 17:09:46.818462"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:09:46.848682"], ["updated_at", "2024-01-22 17:09:46.848682"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:09:46.853461"], ["updated_at", "2024-01-22 17:09:46.853461"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.2ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (25.3ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:10:11.799598"], ["updated_at", "2024-01-22 17:10:11.799598"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:10:11.824837"], ["updated_at", "2024-01-22 17:10:11.824837"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:10:11.828426"], ["updated_at", "2024-01-22 17:10:11.828426"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.1ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (22.8ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:14:23.111004"], ["updated_at", "2024-01-22 17:14:23.111004"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:14:23.138670"], ["updated_at", "2024-01-22 17:14:23.138670"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.5ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.1ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (22.6ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:17:18.170566"], ["updated_at", "2024-01-22 17:17:18.170566"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:17:18.199093"], ["updated_at", "2024-01-22 17:17:18.199093"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test"], ["created_at", "2024-01-22 17:18:17.311895"], ["updated_at", "2024-01-22 17:18:17.311895"]]
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (28.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.4ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.6ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (30.6ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:18:17.685479"], ["updated_at", "2024-01-22 17:18:17.685479"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:18:17.718390"], ["updated_at", "2024-01-22 17:18:17.718390"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test"], ["created_at", "2024-01-22 17:19:09.264311"], ["updated_at", "2024-01-22 17:19:09.264311"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (26.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (3.5ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (2.3ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (31.5ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (3.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:19:09.630470"], ["updated_at", "2024-01-22 17:19:09.630470"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:19:09.665326"], ["updated_at", "2024-01-22 17:19:09.665326"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:19:35.367076"], ["updated_at", "2024-01-22 17:19:35.367076"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (30.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.5ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.6ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (25.5ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:19:35.717126"], ["updated_at", "2024-01-22 17:19:35.717126"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:19:35.748603"], ["updated_at", "2024-01-22 17:19:35.748603"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:20:21.633035"], ["updated_at", "2024-01-22 17:20:21.633035"]]
+  [1m[36mTRANSACTION (8.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (26.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.4ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.7ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (24.0ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:20:21.988895"], ["updated_at", "2024-01-22 17:20:21.988895"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:20:22.024081"], ["updated_at", "2024-01-22 17:20:22.024081"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:20:22.029298"], ["updated_at", "2024-01-22 17:20:22.029298"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:20:47.972988"], ["updated_at", "2024-01-22 17:20:47.972988"]]
+  [1m[36mTRANSACTION (8.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (26.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (3.3ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (2.2ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (28.1ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:20:48.350148"], ["updated_at", "2024-01-22 17:20:48.350148"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:20:48.381070"], ["updated_at", "2024-01-22 17:20:48.381070"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:21:14.977707"], ["updated_at", "2024-01-22 17:21:14.977707"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (28.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.5ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.0ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (18.9ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:21:15.324745"], ["updated_at", "2024-01-22 17:21:15.324745"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:21:15.352505"], ["updated_at", "2024-01-22 17:21:15.352505"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.6ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.6ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (35.4ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:21:53.090338"], ["updated_at", "2024-01-22 17:21:53.090338"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:21:53.157711"], ["updated_at", "2024-01-22 17:21:53.157711"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.4ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.6ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (20.3ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (3.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:22:33.616787"], ["updated_at", "2024-01-22 17:22:33.616787"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:22:33.649731"], ["updated_at", "2024-01-22 17:22:33.649731"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:22:33.654648"], ["updated_at", "2024-01-22 17:22:33.654648"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:26:46.563413"], ["updated_at", "2024-01-22 17:26:46.563413"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (33.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (2.2ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (39.5ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:26:46.973237"], ["updated_at", "2024-01-22 17:26:46.973237"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:26:47.000752"], ["updated_at", "2024-01-22 17:26:47.000752"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:27:10.816684"], ["updated_at", "2024-01-22 17:27:10.816684"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (27.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.4ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (2.3ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (46.6ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:27:11.170175"], ["updated_at", "2024-01-22 17:27:11.170175"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:27:11.228112"], ["updated_at", "2024-01-22 17:27:11.228112"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:28:06.201239"], ["updated_at", "2024-01-22 17:28:06.201239"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (26.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (3.6ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (2.5ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (28.4ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:28:06.558663"], ["updated_at", "2024-01-22 17:28:06.558663"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:28:06.591005"], ["updated_at", "2024-01-22 17:28:06.591005"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:28:27.105402"], ["updated_at", "2024-01-22 17:28:27.105402"]]
+  [1m[36mTRANSACTION (8.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (27.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.4ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.7ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (29.1ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:28:27.484882"], ["updated_at", "2024-01-22 17:28:27.484882"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:28:27.522914"], ["updated_at", "2024-01-22 17:28:27.522914"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:29:03.927714"], ["updated_at", "2024-01-22 17:29:03.927714"]]
+  [1m[36mTRANSACTION (8.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (32.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (3.0ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (2.0ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (26.9ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:29:04.311311"], ["updated_at", "2024-01-22 17:29:04.311311"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:29:04.348293"], ["updated_at", "2024-01-22 17:29:04.348293"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:29:57.968304"], ["updated_at", "2024-01-22 17:29:57.968304"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (29.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.1ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (27.0ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:29:58.321611"], ["updated_at", "2024-01-22 17:29:58.321611"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:29:58.348672"], ["updated_at", "2024-01-22 17:29:58.348672"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (3.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:39:19.469879"], ["updated_at", "2024-01-22 17:39:19.469879"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (33.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (5.4ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (5.1ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (22.4ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (2.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:39:19.944005"], ["updated_at", "2024-01-22 17:39:19.944005"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:39:19.986736"], ["updated_at", "2024-01-22 17:39:19.986736"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:39:19.992502"], ["updated_at", "2024-01-22 17:39:19.992502"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:41:13.128612"], ["updated_at", "2024-01-22 17:41:13.128612"]]
+  [1m[36mTRANSACTION (8.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (26.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (3.5ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (2.4ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (26.5ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:41:13.485913"], ["updated_at", "2024-01-22 17:41:13.485913"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:41:13.524545"], ["updated_at", "2024-01-22 17:41:13.524545"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:41:13.530288"], ["updated_at", "2024-01-22 17:41:13.530288"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:41:13.578521"], ["updated_at", "2024-01-22 17:41:13.578521"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (2.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:54:50.691618"], ["updated_at", "2024-01-22 17:54:50.691618"]]
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (26.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.3ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.2ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (35.3ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:54:51.131261"], ["updated_at", "2024-01-22 17:54:51.131261"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (2.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:54:51.169761"], ["updated_at", "2024-01-22 17:54:51.169761"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:54:51.177411"], ["updated_at", "2024-01-22 17:54:51.177411"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:54:51.224771"], ["updated_at", "2024-01-22 17:54:51.224771"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:54:51.230233"], ["updated_at", "2024-01-22 17:54:51.230233"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:56:20.986310"], ["updated_at", "2024-01-22 17:56:20.986310"]]
+  [1m[36mTRANSACTION (17.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (27.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.1ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (37.9ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:56:21.364370"], ["updated_at", "2024-01-22 17:56:21.364370"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:56:21.405619"], ["updated_at", "2024-01-22 17:56:21.405619"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:56:21.411384"], ["updated_at", "2024-01-22 17:56:21.411384"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:56:21.450392"], ["updated_at", "2024-01-22 17:56:21.450392"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:56:21.455914"], ["updated_at", "2024-01-22 17:56:21.455914"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:56:21.461263"], ["updated_at", "2024-01-22 17:56:21.461263"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:57:16.668656"], ["updated_at", "2024-01-22 17:57:16.668656"]]
+  [1m[36mTRANSACTION (8.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (28.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.9ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.9ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (23.9ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:57:17.012199"], ["updated_at", "2024-01-22 17:57:17.012199"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:57:17.038153"], ["updated_at", "2024-01-22 17:57:17.038153"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:57:17.043329"], ["updated_at", "2024-01-22 17:57:17.043329"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:57:17.081859"], ["updated_at", "2024-01-22 17:57:17.081859"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:57:17.086282"], ["updated_at", "2024-01-22 17:57:17.086282"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:57:17.090636"], ["updated_at", "2024-01-22 17:57:17.090636"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:59:09.384479"], ["updated_at", "2024-01-22 17:59:09.384479"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (26.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (3.2ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (2.1ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (26.2ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:59:09.749262"], ["updated_at", "2024-01-22 17:59:09.749262"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:59:09.787406"], ["updated_at", "2024-01-22 17:59:09.787406"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:59:09.791782"], ["updated_at", "2024-01-22 17:59:09.791782"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:59:09.832958"], ["updated_at", "2024-01-22 17:59:09.832958"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:59:09.839447"], ["updated_at", "2024-01-22 17:59:09.839447"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:59:09.851884"], ["updated_at", "2024-01-22 17:59:09.851884"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:59:30.892442"], ["updated_at", "2024-01-22 17:59:30.892442"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (29.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (3.5ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (2.4ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (27.0ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:59:31.255779"], ["updated_at", "2024-01-22 17:59:31.255779"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 17:59:31.289390"], ["updated_at", "2024-01-22 17:59:31.289390"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:59:31.293915"], ["updated_at", "2024-01-22 17:59:31.293915"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:59:31.334683"], ["updated_at", "2024-01-22 17:59:31.334683"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:59:31.340594"], ["updated_at", "2024-01-22 17:59:31.340594"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 17:59:31.347110"], ["updated_at", "2024-01-22 17:59:31.347110"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:00:16.264336"], ["updated_at", "2024-01-22 18:00:16.264336"]]
+  [1m[36mTRANSACTION (8.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (28.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (3.2ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (2.2ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (19.2ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:00:16.620080"], ["updated_at", "2024-01-22 18:00:16.620080"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:00:16.649214"], ["updated_at", "2024-01-22 18:00:16.649214"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:00:16.653772"], ["updated_at", "2024-01-22 18:00:16.653772"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:00:16.693444"], ["updated_at", "2024-01-22 18:00:16.693444"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:00:16.698647"], ["updated_at", "2024-01-22 18:00:16.698647"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:00:16.703528"], ["updated_at", "2024-01-22 18:00:16.703528"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:00:57.938108"], ["updated_at", "2024-01-22 18:00:57.938108"]]
+  [1m[36mTRANSACTION (7.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (27.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.1ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (20.6ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:00:58.288537"], ["updated_at", "2024-01-22 18:00:58.288537"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:00:58.311228"], ["updated_at", "2024-01-22 18:00:58.311228"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:00:58.316319"], ["updated_at", "2024-01-22 18:00:58.316319"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:00:58.352258"], ["updated_at", "2024-01-22 18:00:58.352258"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:00:58.360755"], ["updated_at", "2024-01-22 18:00:58.360755"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:00:58.365824"], ["updated_at", "2024-01-22 18:00:58.365824"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:01:56.564617"], ["updated_at", "2024-01-22 18:01:56.564617"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (27.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.8ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.9ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (21.3ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:01:56.906827"], ["updated_at", "2024-01-22 18:01:56.906827"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:01:56.944693"], ["updated_at", "2024-01-22 18:01:56.944693"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:01:56.950053"], ["updated_at", "2024-01-22 18:01:56.950053"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:01:57.008623"], ["updated_at", "2024-01-22 18:01:57.008623"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (6.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:01:57.027543"], ["updated_at", "2024-01-22 18:01:57.027543"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:02:28.551763"], ["updated_at", "2024-01-22 18:02:28.551763"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (25.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.1ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (19.9ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:02:28.881743"], ["updated_at", "2024-01-22 18:02:28.881743"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:02:28.905103"], ["updated_at", "2024-01-22 18:02:28.905103"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:02:28.912619"], ["updated_at", "2024-01-22 18:02:28.912619"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:02:29.478203"], ["updated_at", "2024-01-22 18:02:29.478203"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:02:29.483335"], ["updated_at", "2024-01-22 18:02:29.483335"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:03:21.003003"], ["updated_at", "2024-01-22 18:03:21.003003"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (25.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.0ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (29.6ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:03:21.362488"], ["updated_at", "2024-01-22 18:03:21.362488"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:03:21.398047"], ["updated_at", "2024-01-22 18:03:21.398047"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:03:21.404914"], ["updated_at", "2024-01-22 18:03:21.404914"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:03:21.448323"], ["updated_at", "2024-01-22 18:03:21.448323"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:03:21.454885"], ["updated_at", "2024-01-22 18:03:21.454885"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:03:55.066918"], ["updated_at", "2024-01-22 18:03:55.066918"]]
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (26.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (3.1ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.4ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (19.2ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:03:55.413046"], ["updated_at", "2024-01-22 18:03:55.413046"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:03:55.437283"], ["updated_at", "2024-01-22 18:03:55.437283"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:03:55.442809"], ["updated_at", "2024-01-22 18:03:55.442809"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:05:27.902795"], ["updated_at", "2024-01-22 18:05:27.902795"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (26.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.5ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.7ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (19.5ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:05:28.227158"], ["updated_at", "2024-01-22 18:05:28.227158"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:05:28.251733"], ["updated_at", "2024-01-22 18:05:28.251733"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:05:28.260056"], ["updated_at", "2024-01-22 18:05:28.260056"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:05:49.077954"], ["updated_at", "2024-01-22 18:05:49.077954"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (27.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.1ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (19.9ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:05:49.412814"], ["updated_at", "2024-01-22 18:05:49.412814"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:05:49.444623"], ["updated_at", "2024-01-22 18:05:49.444623"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:05:49.449234"], ["updated_at", "2024-01-22 18:05:49.449234"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:07:45.249488"], ["updated_at", "2024-01-22 18:07:45.249488"]]
+  [1m[36mTRANSACTION (8.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (26.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (3.4ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (2.3ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (27.3ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:07:45.598364"], ["updated_at", "2024-01-22 18:07:45.598364"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:07:45.626459"], ["updated_at", "2024-01-22 18:07:45.626459"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:07:45.633988"], ["updated_at", "2024-01-22 18:07:45.633988"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:08:05.980952"], ["updated_at", "2024-01-22 18:08:05.980952"]]
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (31.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.8ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.8ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (23.6ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:08:06.342903"], ["updated_at", "2024-01-22 18:08:06.342903"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:08:06.372045"], ["updated_at", "2024-01-22 18:08:06.372045"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:08:06.376919"], ["updated_at", "2024-01-22 18:08:06.376919"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:08:42.823477"], ["updated_at", "2024-01-22 18:08:42.823477"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (26.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (3.6ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (2.5ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (26.1ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:08:43.162861"], ["updated_at", "2024-01-22 18:08:43.162861"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:08:43.190603"], ["updated_at", "2024-01-22 18:08:43.190603"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:08:43.194739"], ["updated_at", "2024-01-22 18:08:43.194739"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "clients" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (3.6ms)[0m  [1m[34m            SELECT schemaname || '.' || tablename
+            FROM pg_tables
+            WHERE
+              tablename !~ '_prt_' AND
+              tablename <> 'schema_migrations'
+  AND tablename <> 'ar_internal_metadata'
+ AND
+              schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (2.4ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'storage/test'[0m
+  [1m[35m (28.0ms)[0m  [1m[35mTRUNCATE TABLE "categories", "clients", "products", "users" RESTART IDENTITY RESTRICT;[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "clients" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:13:40.356481"], ["updated_at", "2024-01-22 18:13:40.356481"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "name category"], ["created_at", "2024-01-22 18:13:40.383066"], ["updated_at", "2024-01-22 18:13:40.383066"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mClient Create (0.9ms)[0m  [1m[32mINSERT INTO "clients" ("name", "email", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "name client"], ["email", "email@text.com"], ["phone", "33999554466"], ["address", "Lorem ipsum dolor sit amet, consectetur adipiscing elit"], ["created_at", "2024-01-22 18:13:40.404995"], ["updated_at", "2024-01-22 18:13:40.404995"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "teste"], ["created_at", "2024-01-22 18:13:40.410048"], ["updated_at", "2024-01-22 18:13:40.410048"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."code" = $1 LIMIT $2[0m  [["code", 10025], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
